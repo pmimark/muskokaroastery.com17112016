@@ -1,0 +1,23 @@
+%h1 Listing discounts
+
+%table.admin
+  %tr
+    %th Name
+    %th Percentage
+    %th Expires
+    %th
+    %th
+    %th
+
+  - @discounts.each do |discount|
+    %tr{ :class => "#{ cycle("even", "odd") }" }
+      %td= discount.name
+      %td= "#{ discount.percentage }%"
+      %td= discount.expires_at.strftime('%e %B, %Y')
+      %td= link_to 'Show', discount
+      %td= link_to 'Edit', edit_discount_path(discount)
+      %td= link_to 'Destroy', discount, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Discount', new_discount_path

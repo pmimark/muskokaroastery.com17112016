@@ -1,0 +1,10 @@
+- content_for :title do
+  Preview Feature
+
+%h3 Featured Coffee
+.feature-sidebar
+  = render :partial => "pages/feature", :locals => { :feature => @feature }
+
+- content_for :sidebar do
+  %p= link_to 'Edit Feature', edit_feature_path(@feature), :class => "feature-button"
+  %p= link_to 'Back', features_path

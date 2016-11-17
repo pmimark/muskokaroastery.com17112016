@@ -1,0 +1,15 @@
+/ = link_to "Other Products", "#", :id => "other-products-toggle"
+%b Other Products
+%br
+%ul#other-products.clearfix
+  - @products.each do |product|
+    - unless product == @product
+      - product_roast = ProductQuality.where(:kind => "roast", :value => product.roast).first
+      %li= link_to image_tag(product.photo.url(:icon), :size => "32x32", :alt => product.name),
+        product_path(product),
+        "data-name" => product.name,
+        "data-roast" => product_roast.name,
+        :id => "product-#{ product.id }"
+#other-products-caption
+  %h3
+  .roast

@@ -1,0 +1,122 @@
+@import "../variables";
+
+a {
+  font-weight: bold;
+}
+a, a:link, a:visited {
+  color: $red;
+  text-decoration: none;
+}
+a:hover, a:focus, a:active {
+  color: $red;
+  text-decoration: underline;
+}
+
+#content a:link img, #content a:visited img {
+  padding: 9px;
+  border-width: 1px;
+}
+#content a:hover img, #content a:focus img, #content a:active img {
+  padding: 0;
+  border-width: 10px;
+}
+#sidebar div.feature-sidebar a:link img,
+#sidebar div.feature-sidebar a:visited img,
+#content div.feature-sidebar a:link img,
+#content div.feature-sidebar a:visited img {
+  padding: 7px;
+  border: 1px solid $dark-biege;
+}
+#sidebar div.feature-sidebar a:hover img,
+#sidebar div.feature-sidebar a:focus img,
+#sidebar div.feature-sidebar a:active img,
+#content div.feature-sidebar a:hover img,
+#content div.feature-sidebar a:focus img,
+#content div.feature-sidebar a:active img {
+  padding: 0;
+  border: 8px solid $dark-biege;
+}
+#content h2 a:link, #content h2 a:visited,
+#content h2 a:hover, #content h2 a:active, #content h2 a:focus {
+  color: $dark-brown;
+  font-weight: normal;
+}
+
+/* Main Menu */
+header nav li a {
+  display: block;
+  width: 143px;
+  height: 29px;
+  padding: 11px 20px 0px 20px;
+  font-weight: bold;
+}
+header nav li a,
+header nav li a:link,
+header nav li a:visited {
+  text-decoration: none;
+  color: $light-red;
+  background-color: none;
+}
+header nav li a.selected:link,
+header nav li a.selected:visited {
+  color: $light-biege;
+  background-color: $dark-red;
+  box-shadow: inset 0 0 25px $shadow-red;
+  -webkit-box-shadow: inset 0 0 25px $shadow-red;
+  -moz-box-shadow: inset 0 0 25px $shadow-red;
+}
+header nav li a:hover,
+header nav li a:focus,
+header nav li a:active {
+  text-decoration: none;
+  color: $dark-brown;
+  background-color: $dark-biege;
+}
+
+/* Main Menu Dropdown */
+header nav ul ul li a {
+  display: block;
+  width: 143px;
+  height: 100%;
+  padding: 10px 20px 10px 20px;
+  font-weight: normal;
+  line-height: 14px;
+}
+header nav ul ul li a,
+header nav ul ul li a:link,
+header nav ul ul li a:visited,
+header nav ul ul li:hover a,
+header nav li:hover a:link,
+header nav li:hover a:visited {
+  text-decoration: none;
+  color: $brown;
+  background-color: $dark-biege;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+}
+header nav ul ul li a:hover,
+header nav ul ul li a:focus,
+header nav ul ul li a:active,
+header nav li:hover a:hover,
+header nav li:hover a:focus,
+header nav li:hover a:active {
+  text-decoration: none;
+  color: $dark-brown;
+  background-color: $snav-border-biege;
+}
+header nav ul li a.selected {}
+header nav ul li a.over {}
+
+/* Flash Links */
+#flash-notice a, #flash-error a, #flash-warning a, #flash-info a {
+  color: #fff8e6;
+}
+
+/* Admin Panel Links */
+#admin-panel a {
+  color: $dark_biege;
+}
+#admin-panel a:link, #admin-panel a:visited {
+}
+#admin-panel a:active, #admin-panel a:hover, #admin-panel a:focus {
+}

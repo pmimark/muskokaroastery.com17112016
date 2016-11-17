@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Params:
+  = @payment_notification.params
+%p
+  %b Cart:
+  = @payment_notification.cart_id
+%p
+  %b Order:
+  = @payment_notification.order_id
+%p
+  %b Status:
+  = @payment_notification.status
+%p
+  %b Transaction:
+  = @payment_notification.transaction_id
+
+= link_to 'Edit', edit_payment_notification_path(@payment_notification)
+\|
+= link_to 'Back', payment_notifications_path

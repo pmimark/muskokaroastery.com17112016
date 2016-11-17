@@ -1,0 +1,34 @@
+%h3#shopping-cart-total-title
+  = @cart.total_items
+  - if @cart.total_items == 1
+    Item
+  - else
+    Items
+%h2 Shopping Cart
+%p
+  Browse through our shop, find the coffee you're looking for, indicate a quantity
+  next to the type you like, and click the 'Add to Cart' button.
+%br
+= render :partial => "shopping_cart/shipping_rates"
+
+#shopping-cart-form-holder
+  = form_tag shop_checkout_path, :method => :get, :class => "shop-form shopping-cart", :id => "shopping-cart-form", :style => "#{ "display: none;" unless @cart && @cart.items.size > 0 }" do
+    %ul#cart-items.clearfix
+      - if @cart && @cart.items.size > 0
+        - @cart.items.each do |item|
+          %li.clearfix.cart-item-container{ :id => "cart-#{ item.item_id  }" }
+            = render :partial => "shopping_cart/small_cart_line_item", :locals => { :item => item }
+      -# %li#cart-subtotal-container.shopping-cart-subtotal.clearfix
+      -#   = render :partial => "shopping_cart/small_cart_subtotal", :locals => { :cart => @cart, :estimated_shipping_fees => @estimated_shipping_fees }
+      %li#cart-total-container.shopping-cart-total.clearfix
+        = render :partial => "shopping_cart/small_cart_total", :locals => { :cart => @cart, :estimated_shipping_fees => @estimated_shipping_fees }
+      -# = render :partial => "shopping_cart/small_cart_shipping_rates"
+    = submit_tag "Review Order", :style => "margin-bottom: 10px;"
+    or
+    = link_to "empty cart", shop_empty_cart_path, :remote => true
+    - if @cart && @cart.items.size > 0
+      - content_for :scripts do
+        = javascript_include_tag :validate_shopping_cart
+  #empty-cart-container{ :style => "#{ "display: none;" if @cart && @cart.items.size > 0 }" }
+    %br
+    %b (your shopping cart is empty)

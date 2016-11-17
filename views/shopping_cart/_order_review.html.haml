@@ -1,0 +1,74 @@
+- if @cart && @cart.items.size > 0
+  = render :partial => "shopping_cart/discount_form"
+
+  = form_tag order_review_update_totals_path, :remote => true, :class => "shop-form order-review", :id => "order-review-form" do
+    %table
+      %tr.no-border
+        %th{ :colspan => 2 }
+          %h3 Product
+        %th
+          %h3 Quantity
+        %th{ :style => "text-align: right" }
+          %h3 Unit Price
+        %th{ :style => "text-align: right" }
+          %h3 Subtotal
+
+      - @cart.items.each do |item|
+        %tr{ :id => "cart-#{ item.item_id }" }
+          = render :partial => "shopping_cart/order_review_item", :locals => { :item => item }
+
+      - if @cart.promo_discount > 0
+        %tr#cart-subtotal
+          %td.label{ :colspan => 4 } Subtotal
+          %td.subtotal
+            %h3#order-review-subtotal-price= number_to_currency @cart.subtotal
+        %tr#cart-subtotal
+          %td.label{ :colspan => 4 } Discount
+          %td.subtotal
+            %h3#order-review-subtotal-price
+              = "(#{ number_to_currency @cart.promo_discount_price })"
+
+      -# %tr#cart-subtotal
+      -#   %td.label{ :colspan => 4 } Subtotal
+      -#   %td.subtotal
+      -#     %h3#order-review-subtotal-price= number_to_currency @cart.subtotal
+      -# %tr#cart-shipping
+      -#   %td.label{ :colspan => 4 }
+      -#     Estimated Shipping
+      -#     = "(#{ @estimated_country } Rate)"
+      -#   %td.subtotal
+      -#     %h3#order-review-shipping-price= number_to_currency @estimated_shipping_fees
+      %tr#cart-total
+        %td.label{ :colspan => 4 }
+          %h3 Total
+        %td.subtotal
+          -# %h2#order-review-total-price= number_to_currency @cart.total_price + @estimated_shipping_fees
+          %h2#order-review-total-price= number_to_currency @cart.total_price
+          = submit_tag "update totals", :id => "order-review-button"
+          .loading
+            Updating. Please wait.
+      -# %tr#cart-subtotal
+      -#   %td.label{ :colspan => 4 }
+      -#     = link_to "Shipping Rates", "/company/shipping-rates"
+      -#     %br
+      -#     Canada
+      -#     %br
+      -#     United States
+      -#     %br
+      -#     International
+      -#   %td.subtotal
+      -#     %br
+      -#     = number_to_currency ShippingRate.where(:country_code => "CA").first.price
+      -#     %br
+      -#     = number_to_currency ShippingRate.where(:country_code => "US").first.price
+      -#     %br
+      -#     = number_to_currency ShippingRate.where(:country_code => "INT").first.price
+      -#     = "/ #{ DynamicSetting.find_by_name("shipping_rate_multiple").value } lb"
+      -#     %br
+
+- else
+  %p
+    %b Your shopping cart is currently empty.
+    =raw "#{ link_to "Go back to our portfolio", products_path }."
+    %br
+    %br

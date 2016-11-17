@@ -1,0 +1,148 @@
+@import "../variables";
+
+@media screen and (max-width: $phone-width) {
+  #global-shopping-cart-top {
+    right: 80px;
+  }
+
+  #global-checkout-button {
+    display: none;
+  }
+  #global-checkout-button-small {
+    display: inline-block;
+  }
+
+  #product-price {
+    position: relative;
+    top: auto;
+    left: auto;
+  }
+
+  #content {
+    img {
+      width: 100%;
+    }
+    table img {
+      width: auto;
+    }
+  }
+
+  #newsletter-signup-input {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: auto;
+    display: block;
+  }
+  #newsletter-signup-submit {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    margin-top: 10px;
+  }
+
+  form.muskoka-form div.label,
+  form.muskoka-form div.input,
+  form.muskoka-form div.error {
+    float: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  form.muskoka-form div.label {
+    padding-top: 20px;
+  }
+  form.muskoka-form div.input {
+    width: auto;
+    padding-top: 5px;
+    padding-bottom: 20px;
+    padding-right: 12px;
+
+    input {
+      width: 100%;
+    }
+  }
+  form.muskoka-form div.long,
+  form.muskoka-form div.actions {
+    width: 100%;
+    margin: 0;
+    padding: 20px 0 20px 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #global-items,
+  #global-price-total {
+    display: none;
+  }
+  #global-shopping-cart-top {
+    width: 40px;
+    right: 80px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #order-review table th {
+    display: none;
+  }
+  #order-review table tr {
+    position: relative;
+    display: block;
+  }
+  #order-review table td {
+    display: block;
+    width: auto !important;
+
+    &.product-info {
+      position: absolute;
+      top: 0;
+      left: 65px;
+    }
+    // &.thumbnail {
+    //   display: inline-block;
+    // }
+    // &.product-info {
+    //   display: block;
+    // }
+    &.quantity {
+      padding-top: 0;
+      text-align: left;
+      display: inline-block;
+    }
+    &.multiplier {
+      padding-top: 0;
+      text-align: left;
+      display: inline-block;
+    }
+    &.unit-price {
+      padding-top: 0;
+      text-align: left;
+      display: inline-block;
+    }
+    &.subtotal {
+      float: right;
+      padding-top: 2px;
+      text-align: right;
+      display: inline-block;
+      width: auto;
+    }
+  }
+  #cart-total {
+    td.label {
+      padding-top: 12px;
+      float: left;
+    }
+  }
+  #order-review #cart-total td.subtotal {
+    padding-top: 12px;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  .product-list-top img {
+    width: 100%;
+    height: auto;
+  }
+}

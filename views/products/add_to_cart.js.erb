@@ -1,0 +1,66 @@
+// Turn cart on.
+$("#shopping-cart-form").show();
+$("#empty-cart-container").hide();
+
+// Add new items to cart.
+<% unless @new_option_whole_item.blank? %>
+  $("#cart-total-container").before("<li id='cart-<%= @new_option_whole_item.item_id %>' class='clearfix cart-item-container' style='display: none;'></li>");
+  $("#cart-<%= @new_option_whole_item.item_id %>").html("<%= escape_javascript(render(:partial => "shopping_cart/small_cart_line_item", :locals => { :item => @new_option_whole_item })) %>");
+  $("#cart-<%= @new_option_whole_item.item_id %>").slideDown();
+  <% puts "ID: #{ @new_option_whole_item.item_id }" %>
+<% end %>
+<% unless @new_option_ground_item.blank? %>
+  $("#cart-total-container").before("<li id='cart-<%= @new_option_ground_item.item_id %>' class='clearfix cart-item-container' style='display: none;'></li>");
+  $("#cart-<%= @new_option_ground_item.item_id %>").html("<%= escape_javascript(render(:partial => "shopping_cart/small_cart_line_item", :locals => { :item => @new_option_ground_item })) %>");
+  $("#cart-<%= @new_option_ground_item.item_id %>").slideDown();
+  <% puts "ID: #{ @new_option_ground_item.item_id }" %>
+<% end %>
+<% unless @new_option_whole_decaf_item.blank? %>
+  $("#cart-total-container").before("<li id='cart-<%= @new_option_whole_decaf_item.item_id %>' class='clearfix cart-item-container' style='display: none;'></li>");
+  $("#cart-<%= @new_option_whole_decaf_item.item_id %>").html("<%= escape_javascript(render(:partial => "shopping_cart/small_cart_line_item", :locals => { :item => @new_option_whole_decaf_item })) %>");
+  $("#cart-<%= @new_option_whole_decaf_item.item_id %>").slideDown();
+  <% puts "ID: #{ @new_option_whole_decaf_item.item_id }" %>
+<% end %>
+<% unless @new_option_ground_decaf_item.blank? %>
+  $("#cart-total-container").before("<li id='cart-<%= @new_option_ground_decaf_item.item_id %>' class='clearfix cart-item-container' style='display: none;'></li>");
+  $("#cart-<%= @new_option_ground_decaf_item.item_id %>").html("<%= escape_javascript(render(:partial => "shopping_cart/small_cart_line_item", :locals => { :item => @new_option_ground_decaf_item })) %>");
+  $("#cart-<%= @new_option_ground_decaf_item.item_id %>").slideDown();
+  <% puts "ID: #{ @new_option_ground_decaf_item.item_id }" %>
+<% end %>
+<% unless @new_option_coffee_pods_item.blank? %>
+  $("#cart-total-container").before("<li id='cart-<%= @new_option_coffee_pods_item.item_id %>' class='clearfix cart-item-container' style='display: none;'></li>");
+  $("#cart-<%= @new_option_coffee_pods_item.item_id %>").html("<%= escape_javascript(render(:partial => "shopping_cart/small_cart_line_item", :locals => { :item => @new_option_coffee_pods_item })) %>");
+  $("#cart-<%= @new_option_coffee_pods_item.item_id %>").slideDown();
+  <% puts "ID: #{ @new_option_coffee_pods_item.item_id }" %>
+<% end %>
+
+// Update totals of sidebar shopping cart.
+$("#shopping-cart-total-title").html("<%= @cart.items.size %> Items");
+//$("#cart-subtotal-price").html("<%#= number_to_currency @cart.subtotal %>");
+//$("#cart-shipping-price").html("<%#= number_to_currency @estimated_shipping_fees %>");
+//$("#cart-total-price").html("<%#= number_to_currency @cart.total_price + @estimated_shipping_fees %>");
+$("#cart-total-price").html("<%= number_to_currency @cart.total_price %>");
+
+// Update totals of global shopping cart.
+$("#shopping-cart").html("<%= escape_javascript(render(:partial => "layouts/shopping_cart")) %>");
+
+// Zero out purchase form.
+$("#add-to-cart-option-whole-quantity").attr("value", 0);
+$("#add-to-cart-option-ground-quantity").attr("value", 0);
+$("#add-to-cart-option-whole-decaf-quantity").attr("value", 0);
+$("#add-to-cart-option-ground-decaf-quantity").attr("value", 0);
+$("#add-to-cart-option-coffee-pods-quantity").attr("value", 0);
+//$("#shopping-cart-form").effect("highlight", {}, 1500);
+
+// Turn off loading animation and re-enable add-to-cart button.
+$(".loading").hide();
+$("#add-to-cart-button").show();
+
+// Make sure the update totals link is activated as it requires Javascript to be visible.
+$("#update-totals-link").show();
+$("#update-totals-link").click(function(event) {
+  var form = $("#shopping-cart-form");
+  event.preventDefault();
+  $.post("/shop/update_totals", form.serialize(), null, "script");
+  return false;
+});

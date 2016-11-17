@@ -1,0 +1,361 @@
+@import "../variables";
+
+$navheight: 60px;
+$menu-height: 320px;
+$menu-width: 265px;
+$admin-menu-height: 44px;
+//$menu-color: #e856a8;
+$menu-color: $red;
+//$menu-color: #c54d57;
+//$menu-color: #4b4a46;
+//$menu-color: white;
+
+#page-content {
+  z-index: 100;
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  background-color: $biege;
+
+  &.menu-mode {
+    -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+       -moz-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+        -ms-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+         -o-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+            transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    -webkit-transition: -webkit-transform 200ms ease;
+       -moz-transition:    -moz-transform 200ms ease;
+         -o-transition:      -o-transform 200ms ease;
+            transition:         transform 200ms ease;
+    -webkit-backface-visibility: hidden;
+       -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+         -o-backface-visibility: hidden;
+            backface-visibility: hidden;
+  }
+  &.menu-open {
+    -webkit-transform: translate3d($menu-width, 0, 0) scale3d(1, 1, 1);
+       -moz-transform: translate3d($menu-width, 0, 0) scale3d(1, 1, 1);
+        -ms-transform: translate3d($menu-width, 0, 0) scale3d(1, 1, 1);
+         -o-transform: translate3d($menu-width, 0, 0) scale3d(1, 1, 1);
+            transform: translate3d($menu-width, 0, 0) scale3d(1, 1, 1);
+  }
+}
+
+#main-menu {
+  z-index: 1;
+  width: $menu-width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; // Enables natural scrolling on iOS devices.
+  background-color: $menu-color;
+}
+.admin-mode #main-menu {
+  top: $admin-menu-height;
+}
+
+#main-menu-button {
+  position: absolute;
+  display: none; // off by default
+  top: 0;
+  left: 0;
+  bottom: 0;
+  height: $navheight;
+  width: $navheight;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  //font-family: $semibold;
+  font-weight: normal;
+  text-shadow: none;
+  outline: none;
+  text-decoration: none;
+  word-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -moz-font-feature-settings: "liga" on;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+    //background-color: rgba(255, 255, 255, .1);
+  }
+
+  i {
+    position: absolute;
+    display: block;
+    font-size: 28px;
+    pointer-events: none;
+    color: $button-off-font;
+    top: 13px;
+    left: 21px;
+    bottom: 0;
+    height: $navheight;
+  }
+  .main-menu-label {
+    position: absolute;
+    bottom: 12px;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 7px;
+    color: $button-off-font;
+  }
+}
+
+#menu-collapser {
+  z-index: 99999; // Absolutely always on top.
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, .75);
+  font-size: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: none;
+  display: none;
+  cursor: pointer;
+  -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+       -o-backface-visibility: hidden;
+          backface-visibility: hidden;
+
+  &.on {
+    display: block;
+  }
+}
+
+.menu-header {
+  background-color: inherit;
+  text-align: left;
+
+  .menu-close-button {
+    //padding: 18px 23px 17px 23px;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    color: darken($menu-color, 7%);
+    border: 0;
+    outline: none;
+
+    i {
+      line-height: 44px;
+    }
+
+    &:hover {
+      color: lighten($menu-color, 45%);
+    }
+  }
+}
+
+.menu-footer {
+  background-color: inherit;
+}
+
+#main-menu h4 {
+  color: darken($menu-color, 10%);
+  font-size: 14px;
+  line-height: 14px;
+  padding: 10px 20px;
+  text-transform: uppercase;
+}
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid darken($menu-color, 5%);
+
+  & > li {
+    position: relative;
+
+    a.category-link {
+      z-index: 20;
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 23px;
+      border-top: 1px solid darken($menu-color, 5%);
+      padding: 13px 20px 13px 20px;
+      //color: lighten($menu-color, 35%);
+      color: $light-red;
+      font-family: 'MuskokaRoastery', Helvetica, Arial, sans-serif;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 23px;
+      text-transform: uppercase;
+
+
+      &:hover {
+        text-decoration: none;
+        background-color: lighten($menu-color, 3%);
+        color: lighten($menu-color, 45%);
+      }
+      &:hover:after {
+        color: lighten($menu-color, 15%);
+      }
+      &:active {
+        color: white;
+      }
+    }
+
+    button {
+      position: absolute;
+      z-index: 50;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      line-height: 0;
+      font-family: 'ionicons';
+      font-size: 22px;
+      content: "\f151";
+      float: right;
+      color: lighten($menu-color, 30%);
+      border: 0;
+      background-color: $menu-color;
+      border-left: 1px solid darken($menu-color, 5%);
+      border-top: 1px solid darken($menu-color, 5%);
+      outline: none;
+
+      i {
+        pointer-events: none;
+
+        &:before {
+          content: "\f218";
+        }
+      }
+
+      &:hover {
+        background-color: lighten($menu-color, 3%);
+        color: lighten($menu-color, 45%);
+      }
+      &:active {
+        color: white;
+      }
+    }
+    &.open button i:before {
+      content: "\f209";
+    }
+
+    &.selected:after {
+      z-index: 100;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      content: "";
+      pointer-events: none;
+      border-width: 10px 10px 10px 0;
+      border-style: solid;
+      border-color: transparent #fdfbf8; // NOTE: This is a calculated value that is the $page-bg with the #menu-collapser's white overlay on top.
+      margin-top: -10px;
+    }
+    &.selected a.category-link {
+      color: $light-biege;
+      background-color: $dark-red;
+      box-shadow: inset 0 0 25px $shadow-red;
+      -webkit-box-shadow: inset 0 0 25px $shadow-red;
+      -moz-box-shadow: inset 0 0 25px $shadow-red;
+    }
+  }
+}
+
+.sub-menu-list {
+  display: none; // default is set to hidden
+  border-top: 1px solid darken($menu-color, 5%);
+  //background-color: darken($menu-color, 5%);
+  background-color: $dark-red;
+
+  li {
+    position: relative;
+
+    a {
+      display: block;
+      padding: 12px 20px 12px 20px;
+      //font-family: $regular;
+      font-size: 16px;
+      font-weight: normal;
+      //color: lighten($menu-color, 10%);
+      //color: $light-red;
+      color: lighten($dark-red, 10%);
+      border-bottom: 1px solid darken($menu-color, 7%);
+
+      &:hover {
+        text-decoration: none;
+        background-color: darken($menu-color, 3%);
+        color: lighten($menu-color, 35%);
+      }
+      &:active {
+        // color: $blue-light;
+        //color: blue;
+      }
+    }
+
+    &:last-child a {
+      border-bottom: 0;
+    }
+
+    &.selected:after {
+      z-index: 100;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      content: "";
+      pointer-events: none;
+      border-width: 10px 10px 10px 0;
+      border-style: solid;
+      border-color: transparent #fdfbf8; // NOTE: This is a calculated value that is the $page-bg with the #menu-collapser's white overlay on top.
+      margin-top: -10px;
+    }
+    &.selected a {
+      color: $light-biege;
+      box-shadow: inset 0 0 25px $shadow-red;
+      -webkit-box-shadow: inset 0 0 25px $shadow-red;
+      -moz-box-shadow: inset 0 0 25px $shadow-red;
+    }
+  }
+}
+.menu-list > li.open .sub-menu-list {
+  display: block;
+}
+
+.social-menu-list {
+  padding: 20px 12px 20px 4px;
+  font-size: 0;
+  text-align: left;
+
+  li {
+    display: inline-block;
+    width: 20%;
+
+    a {
+      display: block;
+      color: darken($menu-color, 7%);
+      font-size: 24px;
+      text-align: center;
+
+      &:hover {
+        color: lighten($menu-color, 25%);
+      }
+    }
+  }
+}

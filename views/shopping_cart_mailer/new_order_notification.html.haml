@@ -1,0 +1,98 @@
+!!! 5
+%html
+  %head
+    %meta{ :charset => "utf-8" }
+  %body
+    %h1 MRCC Notification: New Order
+    %div
+      %table
+        %tr
+          %td 
+            %b Order ID
+          %td= "##{ @order.id }"
+        %tr
+          %td 
+            %b Ordered by
+          %td
+            = @order.name
+            - unless @order.company.blank?
+              = "(#{ @order.company })"
+        %tr
+          %td 
+            %b Email
+          %td= link_to @order.email, "mailto:#{ @order.email }"
+        %tr
+          %td 
+            %b Ordered on
+          %td= @order.created_at.strftime("%e %B %Y @%l:%M%P")
+      %br
+      %h2 Order
+      %table
+        %tr
+          %th{ :align => "left" } Product Name
+          %th{ :align => "left" } Type
+          %th{ :align => "left" } Flavour
+          %th{ :align => "left" } Quantity
+          %th{ :align => "left" } Unit Price
+          %th{ :align => "left" } Total
+        - @order.line_items.each do |item|
+          %tr
+            %td{ :style => "padding-right: 10px;" }= item.item_name
+            %td{ :style => "padding-right: 10px;" }= item.item_option
+            %td{ :style => "padding-right: 10px;" }= item.item_flavour
+            %td{ :style => "padding-right: 10px;" }= item.quantity.to_s
+            %td{ :style => "padding-right: 10px;" }= number_to_currency item.item_price
+            %td{ :style => "padding-right: 10px;" }= number_to_currency item.item_price * item.quantity
+        %tr
+          %td{ :colspan => 5 }
+            Subtotal
+          %td
+            = number_to_currency @order.subtotal
+        %tr
+          %td{ :colspan => 5 }
+            Shipping Fees
+          %td
+            = number_to_currency @order.shipping_fees
+        %tr
+          %td{ :colspan => 5 }
+            Total
+          %td
+            %b= number_to_currency @order.total
+      %br
+      %h2 Billing Address
+      %p
+        = @order.address
+        = ", " + @order.address_optional unless @order.address_optional.blank?
+        %br
+        = @order.city + ", " + @order.province
+        %br
+        = @order.country
+        %br
+        = @order.postal
+      %p
+        = @order.phone
+      %br
+
+      - if @order.billing_same_as_shipping
+        %b (shipping address is the same as billing address)
+      - else
+        %h2 Shipping Address
+        %p
+          = @order.shipping_name
+          %br
+          = @order.shipping_address
+          = ", " + @order.shipping_address_optional unless @order.shipping_address_optional.blank?
+          %br
+          = @order.shipping_city + ", " + @order.shipping_province
+          %br
+          = @order.shipping_country
+          %br
+          = @order.shipping_postal
+        %p
+          = @order.shipping_phone
+      %br
+      - unless @order.shipping_notes.blank?
+        %p
+          Shipping Notes:
+          %br
+          = @order.shipping_notes

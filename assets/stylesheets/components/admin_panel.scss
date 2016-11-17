@@ -1,0 +1,47 @@
+@import "../variables";
+
+#admin-panel {
+  background-color: #1a1a1a;
+  color: #777777;
+  text-align: center;
+}
+#admin-controls,
+#admin-login {
+  padding: 20px 0 20px 0;
+  display: inline-block;
+}
+#admin-controls {
+  width: 675px;
+  text-align: left;
+}
+#admin-login {
+  width: 250px;
+  text-align: right;
+}
+#admin-controls ul,
+#admin-login ul {
+  list-style-type: none;
+  margin: 0;
+}
+#admin-controls ul li,
+#admin-login ul li {
+  display: inline-block;
+  padding: 0 10px 0 10px;
+  border-right: 1px solid #777777;
+}
+#admin-controls ul li:last-child,
+#admin-login ul li:last-child {
+  border-right: none;
+}
+#admin-login ul li:last-child {
+  padding-right: 0;
+}
+#admin-controls ul li:first-child {
+  padding-left: 0;
+}
+
+table.admin th,
+table.admin td {
+  padding: 5px;
+  vertical-align: middle;
+}

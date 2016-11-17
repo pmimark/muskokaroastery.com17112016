@@ -1,0 +1,32 @@
+= simple_form_for @order do |f|
+  = f.error_messages
+  = f.input :name
+  = f.input :company
+  = f.association :order_status, :label => "Status", :as => :radio_buttons
+  = f.input :created_at, :label => "Ordered on"
+  = f.input :purchased_at, :label => "Purchased on"
+  %br
+  %h2 Billing Address
+  = f.input :address
+  = f.input :address_optional, :label => "Address 2"
+  = f.input :city
+  = f.input :province
+  = f.input :country, :priority => ["Canada", "United States"]
+  = f.input :postal, :label => "Postal/ZIP"
+  = f.input :phone
+  = f.input :email
+  %br
+  = f.input :billing_same_as_shipping, :label => "billing address is same as shipping address"
+  %br
+  %h2 Shipping Address
+  = f.input :shipping_name
+  = f.input :shipping_address, :label => "Address"
+  = f.input :shipping_address_optional, :label => "Address 2"
+  = f.input :shipping_city, :label => "City"
+  = f.input :shipping_province, :label => "Province"
+  = f.input :shipping_country, :label => "Country", :priority => ["Canada", "United States"]
+  = f.input :shipping_postal, :label => "Postal/ZIP"
+  = f.input :shipping_phone, :label => "Phone"
+  %br
+  = f.input :shipping_notes
+  = f.button :submit

@@ -1,0 +1,28 @@
+- content_for :title do
+  Blog
+
+#intro
+  =raw @page.intro
+
+%div
+  =raw @page.body
+
+= render :partial => "list_blog_posts", :locals => { :posts => @blog_posts }
+
+- content_for :sidebar do
+  - unless @featured_product.blank?
+    %h3 Featured
+    .feature-sidebar
+      = render :partial => "pages/feature", :locals => { :feature => @featured_product }
+  - if current_user and current_user.is_admin?
+    %p= link_to "New Blog Post", new_blog_post_path, :class => "feature-button"
+    %br
+    %p= link_to "Edit Intro", edit_page_path(@page)
+    %p= link_to "Edit Blog Categories", blog_categories_path
+
+- unless @page.description.blank?
+  - content_for :description do
+    = @page.description
+- unless @page.keywords.blank?
+  - content_for :keywords do
+    = @page.keywords

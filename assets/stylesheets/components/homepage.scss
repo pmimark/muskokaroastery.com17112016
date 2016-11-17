@@ -1,0 +1,45 @@
+@import "../variables";
+
+div.feature-left,
+div.feature-middle,
+div.feature-right,
+div.feature-preview {
+  width: 200px;
+  float: left;
+}
+div.feature-left,
+div.feature-middle,
+div.feature-preview {
+  margin-right: 40px;
+}
+div.feature-left img,
+div.feature-middle img,
+div.feature-right img
+div.feature-preview img {
+  float: none;
+  margin-bottom: 20px;
+}
+div.feature-left p,
+div.feature-middle p,
+div.feature-right p,
+div.feature-preview p {
+  margin-bottom: 20px;
+}
+div.homepage {}
+div.homepage #content {
+  border-right: none;
+}
+div.homepage h2,
+div.feature-preview h2 {
+  padding-top: 0;
+}
+div.homepage div.feature-left h2,
+div.homepage div.feature-middle h2,
+div.homepage div.feature-right h2,
+div.homepage div.feature-preview h2 {
+  margin-top: 20px !important;
+}
+.feature-image {
+  width: 184px;
+  height: 109px;
+}

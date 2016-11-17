@@ -1,0 +1,20 @@
+#blog
+  - posts.each do |post|
+    %article
+      %hgroup
+        %h2
+          - if post.is_draft
+            *
+          = link_to post.name, blog_post_show_path(post.slug)
+        .blog_category
+          Posted in
+          = link_to post.blog_category.name, blog_category_show_path(post.blog_category.slug)
+          on
+        %time{ :datetime => post.datetime_html5 }
+          = post.datetime_blog
+      %p
+        =raw truncate(strip_tags(post.body), :length => 450)
+        = link_to "Continue Reading", blog_post_show_path(post.slug)
+%hr
+= paginate posts
+

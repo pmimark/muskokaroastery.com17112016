@@ -1,0 +1,15 @@
+- content_for :title do
+  Editing Background
+
+= simple_form_for @background, :html => { :multipart => true } do |f|
+  = f.error_messages
+  = image_tag @background.image(:preview_small)
+  %br
+  %br
+  = f.input :section_id,  :collection => @all_sections.collect { |s| [(s.slug == 'none' ? 'No Section' : s.name), s.id] },
+                          :prompt => "- select a section -",
+                          :as => :radio_buttons
+  = f.input :image
+  = f.button :submit
+  or
+  = link_to "cancel", backgrounds_path

@@ -1,0 +1,38 @@
+- content_for :title do
+  = @page.name
+
+#intro
+  =raw @page.intro
+
+=raw @page.body
+
+- content_for :sidebar do
+  - unless @featured_product.blank?
+    %h3 Featured
+    .feature-sidebar
+      = render :partial => "feature", :locals => { :feature => @featured_product }
+  - if @page.products.size > 0
+    %hr
+  = render :partial => "related_products", :locals => { :related_products => @page.products }
+
+  - if current_user && current_user.is_admin?
+    %hr
+    %p= link_to 'Edit Page', edit_page_path(@page), :class => "feature-button"
+    %br
+    - if @page.slug != "blog"
+      %p= link_to 'Destroy', page_path(@page), :confirm => "Are you sure?", :method => :delete
+
+- unless @page.description.blank?
+  - content_for :description do
+    = @page.description
+- unless @page.keywords.blank?
+  - content_for :keywords do
+    = @page.keywords
+    
+
+-if params[:page_slug] && params[:page_slug] == "100-compostable-pods"
+  = render "floodlight_tags/learn"
+-elsif params[:page_slug] && params[:page_slug] == "the-muskoka-roastery-difference"
+  = render "floodlight_tags/compostable"
+-elsif params[:page_slug] && params[:page_slug] == "roastery-showroom"
+  = render "floodlight_tags/meet" 

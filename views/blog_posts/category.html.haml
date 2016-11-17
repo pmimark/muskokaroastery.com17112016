@@ -1,0 +1,15 @@
+- content_for :title do
+  = @blog_category.name
+
+- if @blog_posts.blank? || @blog_posts.size == 0
+  Sorry, there are no blog posts in this category yet.
+- else
+  = render :partial => "list_blog_posts", :locals => { :posts => @blog_posts }
+
+- content_for :sidebar do
+  - unless @featured_product.blank?
+    %h3 Featured
+    .feature-sidebar
+      = render :partial => "pages/feature", :locals => { :feature => @featured_product }
+  - if current_user and current_user.is_admin?
+    %p= link_to "New Blog Post", new_blog_post_path, :class => "feature-button"

@@ -1,0 +1,103 @@
+- content_for :title do
+  Showing Order
+
+%p
+  Ordered by
+  %b= @order.name
+  - unless @order.company.blank?
+    %br
+    = @order.company
+%p
+  Status:
+  %b= @order.order_status.name
+%p
+  Ordered on:
+  %b= @order.created_at.strftime("%e %B %Y @%l:%M%P")
+  %br
+  Purchased on:
+  %b= @order.purchased_at.strftime("%e %B %Y @%l:%M%P") unless @order.purchased_at.blank?
+
+%h2 Line Items
+%table.admin
+  %tr
+    %th Product
+    %th Qty
+    %th{ :align => "right" } Unit Price
+    %th{ :align => "right" } Subtotal
+  - @order.line_items.each do |line_item|
+    %tr{ :class => "#{ cycle("even", "odd") }" }
+      %td
+        = line_item.product.name
+        = "(#{ line_item.item_option })"
+        - unless line_item.item_flavour.blank?
+          = "- #{ line_item.item_flavour }"
+      %td= line_item.quantity
+      %td{ :align => "right" }= number_to_currency line_item.item_price
+      %td{ :align => "right" }= number_to_currency line_item.full_price
+  %tr{ :class => "odd", :style => "border-top: 1px dotted #e0c298" }
+    %td Subtotal
+    %td{ :colspan => 3, :align => "right" }
+      - if @order.subtotal.blank? || @order.subtotal == 0
+        = number_to_currency @order.total_price
+      - else
+        = number_to_currency @order.subtotal
+  %tr{ :class => "odd" }
+    %td 
+      Shipping Rate
+      = "(#{ @shipping_rate.name })"
+    %td{ :colspan => 3, :align => "right" }
+      - if @order.shipping_fees.blank? || @order.shipping_fees == 0
+        = number_to_currency @shipping_rate.price
+      - else
+        = number_to_currency @order.shipping_fees
+  %tr{ :class => "odd", :style => "border-top: 1px dotted #e0c298" }
+    %td Total
+    %td{ :colspan => 3, :align => "right" }
+      - if @order.subtotal.blank? || @order.subtotal == 0 || @order.shipping_fees.blank? || @order.shipping_fees == 0
+        %b= number_to_currency (@order.total_price + @shipping_rate.price)
+      - else
+        %b= number_to_currency @order.total
+%br
+%h2 Billing Address
+%p
+  = @order.address
+  = ", " + @order.address_optional unless @order.address_optional.blank?
+  %br
+  = @order.city + ", " + @order.province
+  %br
+  = @order.country
+  %br
+  = @order.postal
+%p
+  = @order.phone
+  %br
+  = link_to @order.email, "mailto:#{ @order.email }"
+%br
+
+- if @order.billing_same_as_shipping
+  %b (shipping address is the same as billing address)
+- else
+  %h2 Shipping Address
+  %p
+    = @order.shipping_name
+    %br
+    = @order.shipping_address
+    = ", " + @order.shipping_address_optional unless @order.shipping_address_optional.blank?
+    %br
+    = @order.shipping_city + ", " + @order.shipping_province
+    %br
+    = @order.shipping_country
+    %br
+    = @order.shipping_postal
+  %p
+    = @order.shipping_phone
+%br
+- unless @order.shipping_notes.blank?
+  %p
+    Shipping Notes:
+    %br
+    = @order.shipping_notes
+
+- content_for :sidebar do
+  %p= link_to 'Edit Order', edit_order_path(@order), :class => "feature-button"
+  %p= link_to 'Back', orders_path

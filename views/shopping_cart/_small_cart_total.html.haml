@@ -1,0 +1,6 @@
+.left 
+  Total
+.right
+  -# %h2#cart-total-price= number_to_currency cart.total_price + estimated_shipping_fees
+  %h2#cart-total-price= number_to_currency cart.total_price
+  = link_to "update totals", "#", :id => "update-totals-link"

@@ -1,0 +1,10 @@
+.subtotal.clearfix
+  .left 
+    Subtotal
+  .right
+    %h3#cart-subtotal-price= number_to_currency cart.subtotal
+.shipping.clearfix
+  .left 
+    Estimated Shipping
+  .right
+    %h3#cart-shipping-price= number_to_currency estimated_shipping_fees

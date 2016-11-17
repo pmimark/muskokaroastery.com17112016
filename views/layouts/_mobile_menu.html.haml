@@ -1,0 +1,76 @@
+%header.menu-header
+  %button.menu-close-button#menu-close-button
+    %i.ionicon-close
+
+%ul.menu-list
+  %li#mm-home
+    = link_to 'Home', root_url, class: 'category-link'
+  %li#mm-meet
+    %button.menu-toggle-button
+      %i.ion
+    = link_to 'Meet', meet_path, class: 'category-link'
+    %ul.sub-menu-list
+      - section = Section.where(slug: 'meet').first
+      - section.pages.each do |page|
+        - unless page.hidden
+          %li{ id: "mm-#{ page.slug }" }
+            = link_to page.name, show_page_path(section.slug, page.slug)
+  %li#mm-learn
+    %button.menu-toggle-button
+      %i.ion
+    = link_to 'Learn', learn_path, class: 'category-link'
+    %ul.sub-menu-list
+      - section = Section.where(slug: 'learn').first
+      - section.pages.each do |page|
+        - unless page.hidden
+          %li{ id: "mm-#{ page.slug }" }
+            = link_to page.name, show_page_path(section.slug, page.slug)
+  %li#mm-shop
+    %button.menu-toggle-button
+      %i.ion
+    = link_to 'Shop', shop_path, class: 'category-link'
+    %ul.sub-menu-list
+      %li#mm-portfolio
+        = link_to 'Portfolio', shop_path
+      - @product_types.each do |product_type|
+        %li{ id: "mm-#{ product_type.slug }" }
+          = link_to product_type.name, shop_category_path(product_type.slug)
+      %li#mm-checkout
+        = link_to 'Checkout', shop_checkout_path
+  %li#mm-sustain
+    %button.menu-toggle-button
+      %i.ion
+    = link_to 'Sustain', sustain_path, class: 'category-link'
+    %ul.sub-menu-list
+      - section = Section.where(slug: 'sustain').first
+      - section.pages.each do |page|
+        - unless page.hidden
+          %li{ id: "mm-#{ page.slug }" }
+            = link_to page.name, show_page_path(section.slug, page.slug)
+  %li#mm-blog
+    -# %button.menu-toggle-button
+    -#   %i.ion
+    = link_to 'Blog', blog_path, class: 'category-link'
+    -# %ul.sub-menu-list
+    -#   - @blog_categories.each do |blog_category|
+    -#     %li{ id: "mm-#{ blog_category.slug }" }
+    -#       = link_to blog_category.name, blog_category_show_path(blog_category.slug)
+  %li#mm-where-to-buy
+    = link_to 'Where to Buy', where_to_buy_path, class: 'category-link'
+  %li#mm-contact-us
+    = link_to 'Contact Us', show_no_page_path("contact-us"), class: 'category-link'
+
+%footer.menu-footer
+  %ul.social-menu-list
+    %li
+      %a{ href: 'mailto:info@muskokaroastery.com' }
+        %i.ionicon-email
+    %li
+      %a{ href: 'https://twitter.com/MuskokaRoastery' }
+        %i.ionicon-social-twitter
+    %li
+      %a{ href: 'https://www.facebook.com/MuskokaRoastery' }
+        %i.ionicon-social-facebook
+    -# %li
+    -#   %a{ href: 'https://plus.google.com/.../posts' }
+    -#     %i.ionicon-social-googleplus

@@ -1,0 +1,14 @@
+// Empty sidebar shopping cart.
+$(".cart-item-container").remove();
+$("#shopping-cart-total-title").html("0 Items");
+$("#cart-subtotal-price").html("<%= number_to_currency 0 %>");
+$("#cart-shipping-price").html("<%= number_to_currency 0 %>");
+$("#cart-total-price").html("<%= number_to_currency 0 %>");
+$("#shopping-cart-form").slideUp();
+$("#empty-cart-container").show();
+
+// Empty global shopping cart.
+$("#global-total-items").html("0");
+$("#global-price-total").html("$0.00");
+$("#global-checkout-button").addClass("empty");
+$("#global-checkout-button").attr("value", "Cart Empty");

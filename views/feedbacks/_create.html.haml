@@ -1,0 +1,36 @@
+= form_for @feedback, :remote => true, :html => { :class => "muskoka-form", :id => "contact-form" } do |f|
+  -if @feedback.errors.any?
+    #error_explanation
+      %h2= "#{ pluralize(@feedback.errors.count, "error") } prohibited your feedback from being saved:"
+      %ul
+        - @feedback.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    .label
+      = f.label :name
+      .hint So we can say hello.
+    .input= f.text_field :name, :placeholder => "John Smith"
+    .error 
+  .field
+    .label
+      = f.label :email
+      .hint So we can reply back to you.
+    .input= f.text_field :email, :placeholder => "johnsmith@yourdomain.com"
+    .error  
+  .field
+    .label
+      = f.label :comment, "Message"
+      .hint
+        Ask us a question, give us feedback on how
+        we can make your experience better, or just say hello.
+    .input= f.text_area :comment, :placeholder => "Your message..."
+    .error
+  .field
+    .long
+      = f.check_box :include_in_mailinglist
+      %b= Settings.mailing_list_label      
+      .hint
+        = Settings.mailing_list_description
+  .actions
+    = f.submit "Send"

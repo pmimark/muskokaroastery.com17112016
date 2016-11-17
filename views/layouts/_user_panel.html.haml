@@ -1,0 +1,9 @@
+#admin-panel
+  #admin-controls    
+  #admin-login
+    You are logged in as
+    %b= current_user.username
+    %br
+    %ul
+      %li= link_to "Edit Profile", edit_user_path(current_user)
+      %li= link_to "Logout", logout_path

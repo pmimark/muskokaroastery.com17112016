@@ -1,0 +1,47 @@
+= simple_form_for @product, :html => { :multipart => true } do |f|
+  = f.error_messages
+  = f.input :name, :input_html => { :size => 20 }
+  = f.input :description
+  = f.input :price, :as => :string, :input_html => { :size => 4 }
+  = f.input :size, :input_html => { :size => 4 }, :label => "Weight"
+  = f.input :product_type_id,
+    :collection => @product_types.collect { |pt| [pt.name, pt.id] },
+    :prompt => "- select a type -",
+    :as => :radio_buttons
+  = f.input :body, :input_html => { :class => "tinymce medium" }, :label => "Details", :required => false
+  .input
+    %label
+      Options
+    .checkbox-collection
+      = f.check_box :option_ground
+      Ground?
+      &nbsp;&nbsp;
+      = f.check_box :option_whole
+      Whole Bean?
+      &nbsp;&nbsp;
+      = f.check_box :option_ground_decaf
+      Ground Decaf?
+      &nbsp;&nbsp;
+      = f.check_box :option_whole_decaf
+      Whole Bean Decaf?
+      = f.check_box :option_coffee_pods
+      Coffee Pods?
+  = f.input :roast, :collection => 1..9, :as => :radio_buttons
+  = f.input :body_quality, :label => "Body", :collection => 1..9, :as => :radio_buttons
+  = f.input :acidity, :collection => 1..9, :as => :radio_buttons
+  = f.input :photo, :label => "Image", :required => false
+  - if @product.photo.exists?
+    .preview-image
+      = image_tag @product.photo.url(:square)
+  = f.input :lists_all_flavours, :label => "Include option to choose from list of flavours?"
+  = f.input :include_flavour_descriptions, :label => "Auto-generate descriptions from flavour list?"
+  = f.input :include_graphs, :label => "Show roast, body, and acidity graphs?"
+  = f.input :per, :label => "Unit text", :hint => "Text appearing after product price (e.g., 'per pkg.')"
+  = f.input :price_alt_txt, :label => "Alt text", :hint => "Optional text appearing under product price (e.g., '(comes in 456g packages)')"
+  = f.input :keywords
+  = f.input :is_active, :label => "Publicly viewable?"
+  = f.input :out_of_stock, :label => "Out of stock?"
+  = f.input :is_special, :label => "Is this a special hidden product?"
+  = f.button :submit
+
+= tinymce

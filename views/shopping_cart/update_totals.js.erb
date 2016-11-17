@@ -1,0 +1,9 @@
+$("#shopping-cart-container").html("<%= escape_javascript(render(:partial => "shopping_cart/small_cart")) %>");
+$("#shopping-cart").html("<%= escape_javascript(render(:partial => "layouts/shopping_cart")) %>");
+$("#update-totals-link").show();
+$("#update-totals-link").click(function(event) {
+  var form = $("#shopping-cart-form");
+  event.preventDefault();
+  $.post("/shop/update_totals", form.serialize(), null, "script");
+  return false;
+});

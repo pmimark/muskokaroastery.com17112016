@@ -1,0 +1,5 @@
+- unless feature.blank?
+  = link_to image_tag(feature.photo.url(:featured), :border => 0, :size => "184x109"), feature.link_url
+  %h2= feature.name
+  %p= feature.body
+  = link_to feature.link_name, feature.link_url, :class => "feature-button"

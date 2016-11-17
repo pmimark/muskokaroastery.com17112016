@@ -1,0 +1,61 @@
+-# TODO: It's not awesome that these variables are being defined in the view here...
+- ca_rate = ShippingRate.where(:country_code => "CA").first
+- us_rate = ShippingRate.where(:country_code => "US").first
+- intl_rate = ShippingRate.where(:country_code => "INT").first
+%p{ :style => "margin-bottom: 0;" }
+  Our
+  = link_to "shipping rates", "/company/shipping-rates"
+  are:
+%table.shipping-rates
+  %tr
+    %td $
+    %td.currency
+      %b= number_to_currency ca_rate.price, :unit => ""
+    %td in Canada
+  - if ca_rate.free_price > 0
+    %tr.free-shipping
+      %td{ :colspan => 3 }
+        %i= "FREE for orders over #{ number_to_currency ca_rate.free_price }"
+  %tr
+    %td $
+    %td.currency
+      %b= number_to_currency us_rate.price, :unit => ""
+    %td to the United States
+  - if us_rate.free_price > 0
+    %tr.free-shipping
+      %td{ :colspan => 3 }
+        %i= "FREE for orders over #{ number_to_currency us_rate.free_price }"
+  %tr
+    %td $
+    %td.currency
+      %b= number_to_currency intl_rate.price, :unit => ""
+    %td
+      for up to
+      %b.light= DynamicSetting.find_by_name("shipping_rate_multiple").value.to_i
+      units Int'l
+  - if intl_rate.free_price > 0
+    %tr.free-shipping
+      %td{ :colspan => 3 }
+        %i= "FREE for orders over #{ number_to_currency intl_rate.free_price }"
+  / %tr
+  /   %td
+  /   %td.currency
+  /     %b FREE
+  /   %td
+  /     for orders in Canada over $40
+  /     -# TODO: Make this value dynamic.
+
+  -# %br
+  -# %b.light= number_to_currency ShippingRate.where(:country_code => "CA").first.price
+  -# in Canada
+  -# %br
+  -# %b.light= number_to_currency ShippingRate.where(:country_code => "US").first.price
+  -# to the United States
+  -# %br
+  -# %b.light= number_to_currency ShippingRate.where(:country_code => "INT").first.price
+  -# for up to
+  -# %b.light= DynamicSetting.find_by_name("shipping_rate_multiple").value
+  -# units Int'l
+  -# , and for every
+  -# %b.light= DynamicSetting.find_by_name("shipping_rate_multiple").value
+  -# units thereafter.

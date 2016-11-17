@@ -1,0 +1,39 @@
+/* Welcome to Compass. Use this file to write IE specific override styles.
+ * Import this file using the following HTML or equivalent:
+ * <!--[if IE]>
+ *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+ * <![endif]--> */
+@import "variables";
+
+@font-face {
+  font-family: 'MuskokaRoastery';
+  src: url('/stylesheets/fonts/muskoka-roastery-webfont.eot?'); /*format('embedded-opentype'); */
+}
+
+header nav {
+  height: 41px;
+}
+
+form.muskoka-form input[type="text"] {
+  padding-top: 5px;
+  height: 20px;
+}
+
+div.custom-select-container {
+  border: 1px solid $dark-biege !important;
+}
+
+#google-map-where-to-buy img {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+form.muskoka-form div.field,
+form.muskoka-form div.actions {
+  clear: both;
+}
+
+footer {
+  clear: both;
+}

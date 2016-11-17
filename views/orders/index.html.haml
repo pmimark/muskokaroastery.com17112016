@@ -1,0 +1,36 @@
+- content_for :title do
+  Latest Orders
+
+%table.admin{ :style => "width: 100%" }
+  %tr
+    %th #
+    %th Name
+    %th Phone
+    %th Email
+    %th Order status
+    %th Paid on
+    %th{ :align => "right" } Total
+    %th
+    %th
+    %th
+
+  - @orders.each do |order|
+    %tr{ :class => "#{ cycle("even", "odd") }" }
+      %td= order.id
+      %td
+        %b= order.name
+      %td= order.phone
+      %td= link_to "Email", "mailto:#{ order.email }"
+      %td= order.order_status.name unless order.order_status.blank?
+      %td= order.purchased_at.strftime("%e %B %Y") unless order.purchased_at.blank?
+      %td{ :align => "right" }
+        %b= number_to_currency order.total
+      %td= link_to 'Show', order
+      %td= link_to 'Edit', edit_order_path(order)
+      %td= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete
+%hr
+= paginate @orders
+
+- content_for :sidebar do
+  -#   %p= link_to 'New Order', new_order_path, :class => "feature-button"
+  %p= link_to "Edit Shipping Rates", shipping_rates_path

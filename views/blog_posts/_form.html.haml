@@ -1,0 +1,13 @@
+= simple_form_for @blog_post do |f|
+  = f.error_messages
+  = f.input :name
+  = f.input :created_at, :label => "Date", as: :datetime
+  .editor-area
+    = f.text_area :body, :class => "tinymce"
+  = f.input :blog_category_id, :collection => @blog_categories.collect { |c| [c.name, c.id] }, :prompt => "- select a category -", :label => "Category"
+  = f.input :is_draft, :as => :radio_buttons, :label => "Save as draft?"
+  = f.input :keywords
+  = f.input :description
+  = f.button :submit
+
+= tinymce

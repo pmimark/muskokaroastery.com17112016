@@ -1,0 +1,102 @@
+- content_for :title do
+  Place Your Order
+
+- unless current_user
+  %p{ :style => "font-weight: bold;" }
+    If you have already
+    = link_to "registered an account", new_user_path
+    with us, you can
+    = link_to "login", login_path(:d => 'checkout')
+    to sync your account details with your shopping cart.
+%p
+  Check that your order details exactly what you are expecting to purchase. If you want to make
+  a change or add an item, you can still go back and
+  =raw "#{ link_to "continue shopping", products_path }."
+  Once your order looks good, and you have entered your billing and shipping information, proceed to checkout.
+  If you encounter any problems at any point during the purchasing process, please let us know at
+  = link_to Settings.support_email, "mailto:#{ Settings.support_email }"
+%p
+  %b ***Please note that due to the potential Canada Post strike we are unable to ship orders to any Canadian P.O box***
+%p
+  = render :partial => "shopping_cart/shipping_rates"
+
+-# = render :partial => "discount_form"
+
+#order-review
+  = render :partial => "order_review"
+
+#order-form-container
+  - if @cart && @cart.items.size > 0
+    = form_for @order,
+      :url => shop_place_order_path,
+      :remote => true,
+      :html => { :class => "muskoka-form", :id => "order-form", :method => :post } do |f|
+
+      -# = f.hidden_field :total, :value => @cart.subtotal
+      -# = f.hidden_field :order_status_id, :value => @default_order_status.id
+      = f.error_messages
+
+      #billing-details
+        %h2 Billing Details
+        %p
+          If your billing and shipping details are the same, then please fill out this single form. If
+          your shipping address is different from your billing address, simply un-check the box at the
+          bottom to reveal the separate shipping details form.
+
+        = render :partial => "order_form", :locals => { :f => f }
+
+        .field
+          .long
+            = f.check_box :include_in_mailinglist, :checked => (current_user.include_in_mailinglist if current_user)
+            %b= Settings.mailing_list_label
+            .hint
+              = Settings.mailing_list_description
+        .field
+          .long
+            = f.check_box :billing_same_as_shipping, :checked => (current_user ? current_user.billing_same_as_shipping : 'checked')
+            %b shipping address is the same as billing address
+            .hint
+              If your shipping address is different than your billing
+              address, simply uncheck this box.
+
+        / #billing-button.actions.clearfix
+        /   .button
+        /     = f.submit "Check Out", :id => "billing-button-button"
+        /   .extras
+        /     or
+        /     = link_to "continue shopping", products_path
+        / #billing-loader.actions.clearfix
+        /   .button.loading
+        /     Connecting to PayPal. Please wait.
+
+      #shipping-details.clearfix
+        %h2 Shipping Details
+        %p
+          When you are sending the coffee in a different direction, please fill out the information
+          below so that we get the coffee to the right destination.
+
+        = render :partial => "shipping_form", :locals => { :f => f }
+
+      #checkout-button.actions.clearfix
+        .button
+          = f.submit "Check Out", :id => "checkout-button-button"
+        .extras
+          or
+          = link_to "continue shopping", products_path
+      #checkout-loader.actions.clearfix
+        .button.loading
+          Connecting to PayPal. Please wait.
+
+%p
+  Your privacy is important to us. Your billing and shipping information is used only for the purposes
+  of fulfilling your order (sending a bill and shipping your coffee to where you want it to go). Some
+  circumstances may require that we contact you in order to fulfill your order, and we may need your
+  phone number in this case, but only in the interest of getting you your coffee. Please read our full
+  = link_to "terms of use", "/company/terms-of-use"
+  if you have any concerns.
+  
+= render "floodlight_tags/checkout"
+
+- content_for :scripts do
+  = javascript_include_tag :select_skin
+  = javascript_include_tag :validate_order

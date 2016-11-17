@@ -1,0 +1,31 @@
+- content_for :title do
+  - if @blog_post.is_draft
+    *
+  = @blog_post.name
+
+=raw @blog_post.body
+
+.blog_meta
+  .blog_category
+    Posted in
+    = link_to @blog_post.blog_category.name, blog_category_show_path(@blog_post.blog_category.slug)
+    on
+  %time{ :datetime => @blog_post.datetime_html5 }
+    = @blog_post.datetime_blog
+
+- content_for :sidebar do
+  - unless @featured_product.blank?
+    %h3 Featured
+    .feature-sidebar
+      = render :partial => "pages/feature", :locals => { :feature => @featured_product }
+  - if current_user and current_user.is_admin?
+    %p= link_to "Edit Blog Post", edit_blog_post_path(@blog_post), :class => "feature-button"
+    %br
+    %p= link_to "Destroy", blog_post_path(@blog_post), :confirm => "Are you sure?", :method => :delete
+    %p= link_to "Back to Blog List", blog_path
+
+- unless @blog_post.description.blank?
+  - content_for :description do
+    = @blog_post.description
+  - content_for :keywords do
+    = @blog_post.keywords

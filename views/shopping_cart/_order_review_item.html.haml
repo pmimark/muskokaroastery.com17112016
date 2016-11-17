@@ -1,0 +1,23 @@
+%td.thumbnail{ :width => 50 }
+  .cart-item-wrapper
+    = image_tag item.product.photo.url(:shopping_cart), :size => "40x40", :alt => "#{ item.name } Thumbnail"
+%td.product-info
+  .cart-item-wrapper
+    - if item.flavour.blank? || item.flavour.downcase == "none"
+      %h3=raw "#{ link_to item.name, product_path(item.product) }"
+    - else
+      %h3=raw "#{ link_to item.name, product_path(item.product) }: #{ item.flavour.titleize }"
+    =raw "<strong>#{ item.option.titleize }</strong>"
+    = "(#{ item.product.price_alt_txt })"
+    %br
+    = link_to "remove", shop_remove_item_path(item.product.id, item.option, item.flavour), :remote => true, :confirm => "Are you sure?"
+%td.quantity{ :width => 40 }
+  .cart-item-wrapper
+    %input{ :type => "text", :value => item.quantity, :maxlength => 3, :name => "items[#{ item.item_id }]", :id => item.item_id }
+%td.unit-price
+  .cart-item-wrapper
+    = number_to_currency item.unit_price
+    ea.
+%td.subtotal
+  .cart-item-wrapper
+    %h2= number_to_currency item.price

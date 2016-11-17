@@ -1,0 +1,8 @@
+- content_for :title do
+  Editing Feature
+
+= render 'form'
+
+- content_for :sidebar do
+  %p= link_to 'Preview', @feature, :class => "feature-button"
+  %p= link_to 'Back', features_path

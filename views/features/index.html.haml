@@ -1,0 +1,33 @@
+- content_for :title do
+  Listing Features
+
+%table.admin
+  %tr
+    %th Photo
+    %th Name
+    %th Link
+    %th Type
+    %th
+    %th
+    %th
+
+  - @features.each do |feature|
+    %tr{ :class => "#{ cycle("even", "odd") }" }
+      %td= image_tag feature.photo.url(:thumb), :class => "no-border"
+      %td
+        - if feature.is_active
+          %b= feature.name
+        - else
+          = feature.name
+      %td= feature.link_url
+      %td
+        - if feature.is_homepage_feature
+          Homepage
+        - else
+          Internal
+      %td= link_to 'Show', feature
+      %td= link_to 'Edit', edit_feature_path(feature)
+      %td= link_to 'Destroy', feature, :confirm => 'Are you sure?', :method => :delete
+
+- content_for :sidebar do
+  %p= link_to 'New Feature', new_feature_path, :class => "feature-button"

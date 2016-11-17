@@ -1,0 +1,10 @@
+- content_for :title do
+  Editing Homepage Title
+
+= simple_form_for @homepage_title, :url => update_homepage_title_pages_path do |f|
+  = f.error_messages
+  = f.input :value, :as => :string
+  = f.button :submit
+
+- content_for :sidebar do
+  %p= link_to 'Homepage', root_url

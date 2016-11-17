@@ -1,0 +1,6 @@
+#discount-form-container
+  If you have a promotional discount code, enter your code here:
+
+  = form_tag add_discount_path, :class => "shop-form", :id => "discount-form" do
+    %input{ :type => "text", :value => "", :name => "code", :placeholder => "Discount Code" }
+    %input{ :type => "submit", :value => "Add" }

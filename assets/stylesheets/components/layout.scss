@@ -1,0 +1,83 @@
+@import "../variables";
+
+#container {
+  background: transparent url('../images/background_seagull_on_misty_lake.jpg') center 0 no-repeat;
+  /*padding-bottom: 80px;*/
+  padding-bottom: 20px;
+}
+#flash {
+  height: 195px;
+  /*width: 680px;*/
+  padding: 40px;
+}
+#main {}
+#content {
+  width: $content-width;
+  float: left;
+  padding: 0 39px 10px 0;
+  border-right: 1px dotted $dark-biege;
+}
+#intro {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 22px;
+  margin-bottom: 18px;
+}
+#content p:last-child {
+  margin-bottom: 0;
+}
+#content img {
+  padding: 9px;
+  margin: 0;
+  border: 1px solid $dark-biege;
+  /*float: left;*/
+}
+#content img.tiny {
+  padding: 6px;
+}
+#content img.featured-image {
+  margin-bottom: 20px;
+}
+#content h1 sup, #content h1 sub,
+#content h2 sup, #content h2 sub,
+#content h3 sup, #content h3 sub {
+  font-weight: normal;
+  font-family: $sans-serif;
+}
+#content h1 sup,
+#content h1 sub {
+  font-size: 14px;
+}
+#content h2 sup,
+#content h2 sub {
+  font-size: 11px;
+}
+#content h3 sup,
+#content h3 sub {
+  font-size: 9px;
+}
+#content h2 {
+  margin-bottom: 19px;
+  clear: both;
+}
+#content ul {
+  list-style: none;
+  list-style-type: none;
+  margin-left: 0;
+  padding: 0 0 10px 0;
+}
+#content ul.product-flavour-descriptions {
+  padding-bottom: 0;
+}
+#content ul li {
+  list-style: none;
+  list-style-type: none;
+  margin-left: 0;
+  padding: 0 0 10px 0;
+}
+#content ul li:last-child {
+  padding-bottom: 0;
+}
+#content b {
+  color: $dark-brown;
+}

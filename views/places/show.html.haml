@@ -1,0 +1,28 @@
+- content_for :title do
+  Showing Place
+
+#google-map-preview
+
+%h2= @place.name
+=raw @place.address + "<br>"
+=raw @place.city + "<br>" unless @place.city.blank?
+=raw @place.province + "<br>" unless @place.province.blank?
+=raw @place.country + "<br>" unless @place.country.blank?
+=raw @place.postal + "<br>" unless @place.postal.blank?
+%br
+=raw "<b>" + @place.contact + "</b><br>" unless @place.contact.blank?
+=raw "#{ link_to(@place.email, "mailto:#{ @place.email }") }<br>" unless @place.email.blank?
+=raw @place.phone + "<br>" unless @place.phone.blank?
+=raw link_to(@place.website, @place.website) unless @place.website.blank?
+=raw "<br><br>" + @place.description + "<br>" unless @place.description.blank?
+=raw "<br><br>" + @place.notes + "<br>" unless @place.notes.blank?
+
+- content_for :sidebar do
+  %p= link_to 'Edit', edit_place_path(@place), :class => "feature-button"
+  %p= link_to 'Back', places_path
+
+- content_for :scripts do
+  = javascript_include_tag "http://maps.google.com/maps/api/js?sensor=false"
+  = javascript_include_tag :google_maps
+  - if @place.gmaps
+    = render :partial => "place_map", :locals => { :place => @place }

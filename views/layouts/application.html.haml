@@ -1,0 +1,94 @@
+!!! 5
+%html.no-js{ :lang => "en" }
+  %head
+    %meta{ :charset => "utf-8" }
+    %title
+      - if content_for? :title
+        - unless @is_homepage
+          = "#{ yield :title } | "
+      Muskoka Roastery Coffee Company
+    %meta{ :name => "author", :content => "http://www.overdrivedesign.com" }
+    - if content_for? :description
+      %meta{ :name => "description", :content => "#{ yield :description }" }
+    - if content_for? :keywords
+      %meta{ :name => "keywords", :content => "#{ yield :keywords }" }
+    %meta{ 'http-equiv' => 'X-UA-Compatible', content: 'IE-edge,chrome=1' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    %link{ :rel => "shortcut icon", :href => "/favicon.ico" }
+    %link{ :rel => "apple-touch-icon", :href => "/apple-touch-icon.png" }
+    %link{ :rel => "apple-touch-icon", :sizes => "57x57", :href => "/apple-touch-icon-57x57.png" }
+    %link{ :rel => "apple-touch-icon", :sizes => "72x72", :href => "/apple-touch-icon-72x72.png" }
+    %link{ :rel => "apple-touch-icon", :sizes => "114x114", :href => "/apple-touch-icon-114x114.png" }
+    = yield :head
+    = stylesheet_link_tag 'application', media: 'all'
+    - if current_user && current_user.is_admin?
+      = stylesheet_link_tag :admin, :media => "all"
+    <!--[if lte IE 8]>
+    = stylesheet_link_tag :ie, :media => "all"
+    <![endif]-->
+    = javascript_include_tag 'meta'
+    = csrf_meta_tags
+
+    %body
+      #page-content
+        %header
+          - if current_user && current_user.is_admin?
+            = render :partial => "layouts/admin_panel"
+          - if current_user && !current_user.is_admin?
+            = render :partial => "layouts/user_panel"
+
+          #global
+            %button.main-menu-button#main-menu-button
+              %i.ionicon-navicon
+              .main-menu-label Menu
+            #logo
+              = link_to image_tag("muskoka_roastery_logo.svg",
+                  :alt => "Muskoka Roastery Coffee Company",
+                  :border => 0), root_url
+            #shopping-cart
+              = render :partial => "layouts/shopping_cart"
+          %nav
+            = render :partial => "layouts/main_menu"
+
+        #container{ :class => "#{ 'homepage' if @is_homepage }", :style => "#{ background_image }" }
+          #flash
+            - if flash
+              - flash.each do |name, msg|
+                %div{ :class => "message #{ name }" }
+                  = raw msg
+
+          %section#main.clearfix
+            %article#content.clearfix
+              - if content_for? :title
+                %h1= yield :title
+              = yield
+            - if content_for? :sidebar
+              %aside#sidebar= yield :sidebar
+
+        %footer
+          = render :partial => "layouts/newsletter_signup"
+          %nav
+            = render :partial => "layouts/sitemap"
+          #more
+            #copyright
+              %nav= render :partial => "layouts/footer_nav"
+              &copy; 2016 Muskoka Roastery Coffee Co.
+
+            #social
+              = link_to 'Rainforest Alliance', 'http://www.rainforest-alliance.org', :target => '_blank', :class => 'rainforest-alliance', :title => 'Certified Rainforest Alliance'
+              = link_to 'Twitter', 'https://twitter.com/MuskokaRoastery', :target => '_blank', :class => 'twitter', :title => 'Follow us on Twitter'
+              = link_to 'Facebook', 'https://www.facebook.com/MuskokaRoastery', :target => '_blank', :class => 'facebook', :title => 'Friend us on Facebook'
+              = link_to 'Instagram', 'https://www.instagram.com/muskokaroastery', :target => '_blank', :class => 'instagram', :title => 'Follow us on Instagram'
+
+        %button#menu-collapser{ title: 'Close Menu' }
+
+      -# The mobile menu is always on, but underneath the main page content.
+      %nav#main-menu
+        = render :partial => 'layouts/mobile_menu'
+
+      = javascript_include_tag :application
+      - if current_user and current_user.is_admin?
+        = javascript_include_tag :admin
+      = yield :scripts
+      = render "layouts/ie_png_fix"
+      = render "layouts/google_analytics"

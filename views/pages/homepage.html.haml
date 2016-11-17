@@ -1,0 +1,66 @@
+- @is_homepage = true
+
+- content_for :title do
+  = @homepage_title
+- if current_user and current_user.is_admin?
+  %hr
+  %p= link_to "Edit Title", edit_homepage_title_pages_path
+
+.clearfix.product-list-top
+  .feature-left
+    - feature = Feature.homepage_left
+    = link_to image_tag(feature.photo.url(:featured), :border => 0, class: 'feature-image'), feature.link_url
+    %h2= feature.name
+    %p= feature.body
+    = link_to feature.link_name, feature.link_url, :class => "feature-button"
+    - if current_user and current_user.is_admin?
+      %hr
+      %p= link_to "Edit", edit_left_features_path
+    -# = render :partial => "pages/feature_homepage", :locals => { :feature => Feature.homepage_left }
+  .feature-middle
+    - feature = Feature.homepage_middle
+    = link_to image_tag(feature.photo.url(:featured), :border => 0, class: 'feature-image'), feature.link_url
+    %h2= feature.name
+    %p= feature.body
+    = link_to feature.link_name, feature.link_url, :class => "feature-button"
+    - if current_user and current_user.is_admin?
+      %hr
+      %p= link_to "Edit", edit_middle_features_path
+    -# = render :partial => "pages/feature_homepage", :locals => { :feature => Feature.homepage_middle }
+  .feature-right
+    - feature = Feature.homepage_right
+    = link_to image_tag(feature.photo.url(:featured), :border => 0, class: 'feature-image'), feature.link_url
+    %h2= feature.name
+    %p= feature.body
+    = link_to feature.link_name, feature.link_url, :class => "feature-button"
+    - if current_user and current_user.is_admin?
+      %hr
+      %p= link_to "Edit", edit_right_features_path
+    -# = render :partial => "pages/feature_homepage", :locals => { :feature => Feature.homepage_right }
+-#.clearfix.product-list-bottom
+-#  .feature-left
+-#    - feature = Feature.homepage_left
+-#    = link_to feature.link_name, feature.link_url, :class => "feature-button"
+-#    - if current_user and current_user.is_admin?
+-#      %hr
+-#      %p= link_to "Edit", edit_left_features_path
+-#  .feature-middle
+-#    - feature = Feature.homepage_middle
+-#    = link_to feature.link_name, feature.link_url, :class => "feature-button"
+-#    - if current_user and current_user.is_admin?
+-#      %hr
+-#      %p= link_to "Edit", edit_middle_features_path
+-#  .feature-right
+-#    - feature = Feature.homepage_right
+-#    = link_to feature.link_name, feature.link_url, :class => "feature-button"
+-#    - if current_user and current_user.is_admin?
+-#      %hr
+-#      %p= link_to "Edit", edit_right_features_path
+
+- content_for :sidebar do
+  = render :partial => "pages/homepage_blog_posts", :locals => { :posts => @blog_posts }
+  - if current_user and current_user.is_admin?
+    %hr
+    %p= link_to "Manage Blog Posts", blog_posts_path
+    
+= render "floodlight_tags/home_page"

@@ -1,0 +1,36 @@
+- content_for :title do
+  = @page.name
+
+#intro
+  =raw @page.intro
+
+=raw @page.body
+
+#contact-form-container
+  = render :partial => "create"
+
+.loading
+  Sending. Please wait.
+
+- content_for :sidebar do
+  - unless @featured_product.blank?
+    %h3 Featured
+    .feature-sidebar
+      = render :partial => "pages/feature", :locals => { :feature => @featured_product }
+  - if current_user and current_user.is_admin?
+    %p= link_to 'Edit Page', edit_page_path(@page), :class => "feature-button"
+    %br
+    - if @page.slug != "blog"
+      %p= link_to 'Destroy', page_path(@page), :confirm => "Are you sure?", :method => :delete
+
+- unless @page.description.blank?
+  - content_for :description do
+    = @page.description
+- unless @page.keywords.blank?
+  - content_for :keywords do
+    = @page.keywords
+
+- content_for :scripts do
+  = javascript_include_tag :validate_contact
+
+= render "floodlight_tags/contact_us"

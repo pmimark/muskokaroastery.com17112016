@@ -1,0 +1,40 @@
+= form_tag add_product_to_cart_path(@product), :remote => true, :class => "shop-form purchase", :id => "add-to-cart-form" do
+  - if @product.lists_all_flavours
+    %div{ :style => "padding-bottom: 20px;" }
+      - @product_flavours = ProductFlavour.where(:product_id => @product.id).order(:position)
+      =# select_tag "product_flavour_slug", options_from_collection_for_select(@product_flavours, "slug", "name"), :class => "product-flavour-select-button"
+      = collection_select :product_flavour, :slug, @product_flavours, :slug, :name, { :disabled => lambda{ |flavour| flavour.out_of_stock } }, :class => 'product-flavour-select-button'
+  %table#product-options
+    - if @product.option_whole
+      %tr
+        %td.image= image_tag "icon_whole_bean.png", :size => "32x32", :alt => "Whole Bean"
+        %td.description= Product::OPTION_WHOLE_NAME
+        %td.input
+          %input{ :type => "text", :value => 0, :maxlength => 3, :name => "option_whole_quantity", :id => "add-to-cart-option-whole-quantity" }
+    - if @product.option_ground
+      %tr
+        %td.image= image_tag "icon_ground.png", :size => "32x32", :alt => "Ground"
+        %td.description= Product::OPTION_GROUND_NAME
+        %td.input
+          %input{ :type => "text", :value => 0, :maxlength => 3, :name => "option_ground_quantity", :id => "add-to-cart-option-ground-quantity" }
+    - if @product.option_whole_decaf
+      %tr
+        %td.image= image_tag "icon_whole_bean_decaf.png", :size => "32x32", :alt => "Natural Whole Bean Decaf"
+        %td.description= Product::OPTION_WHOLE_DECAF_NAME
+        %td.input
+          %input{ :type => "text", :value => 0, :maxlength => 3, :name => "option_whole_decaf_quantity", :id => "add-to-cart-option-whole-decaf-quantity" }
+    - if @product.option_ground_decaf
+      %tr
+        %td.image= image_tag "icon_ground_decaf.png", :size => "32x32", :alt => "Natural Ground Decaf"
+        %td.description= Product::OPTION_GROUND_DECAF_NAME
+        %td.input
+          %input{ :type => "text", :value => 0, :maxlength => 3, :name => "option_ground_decaf_quantity", :id => "add-to-cart-option-ground-decaf-quantity" }
+    - if @product.option_coffee_pods
+      %tr
+        %td.image= image_tag "icon_coffee_pod.png", :size => "32x32", :alt => "Coffee Pods"
+        %td.description= Product::OPTION_COFFEE_PODS_NAME
+        %td.input
+          %input{ :type => "text", :value => 0, :maxlength => 3, :name => "option_coffee_pods_quantity", :id => "add-to-cart-option-coffee-pods-quantity" }
+  = submit_tag "+ Add to Cart", :id => "add-to-cart-button"
+  .loading
+    Adding to cart. Please wait.

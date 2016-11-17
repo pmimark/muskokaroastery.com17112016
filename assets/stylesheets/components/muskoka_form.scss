@@ -1,0 +1,372 @@
+@import "../variables";
+
+/* Form */
+/********************************/
+form.muskoka-form {
+  width: 680px;
+}
+
+/* Form Elements */
+/********************************/
+form.muskoka-form input,
+form.muskoka-form textarea {
+  width: 186px;
+  margin: 1px;
+  padding: 0 5px 0 5px;
+  background-color: $light-biege-form-bg;
+  box-shadow: inset 1px 1px 6px $brown;
+  -webkit-box-shadow: inset 1px 1px 6px $brown;
+  -moz-box-shadow: inset 1px 1px 6px $brown;
+  border: 1px solid $light-biege-form-border;
+  color: $dark-brown;
+  font-size: 12px;
+  font-weight: bold;
+}
+form.muskoka-form input {
+  height: 25px;
+}
+form.muskoka-form textarea {
+  height: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: -5px;
+}
+form.muskoka-form select {
+  width: 200px;
+  height: 25px;
+  // margin: 0;
+  // padding: 0 8px 0 8px;
+  // -webkit-appearance: none;
+  // -moz-appearance: none;
+  // appearance: none;
+  // -moz-border-radius: 8px;
+  // -webkit-border-radius: 8px;
+  // border-radius: 8px;
+  // box-shadow: 1px 1px 6px $brown;
+  // -webkit-box-shadow: 1px 1px 6px $brown;
+  // -moz-box-shadow: 1px 1px 6px $brown;
+  // background: $biege url('../images/icon_select_arrow.png') no-repeat scroll 177px 9px;
+  // color: $dark-brown;
+  // font-size: 12px;
+  // font-weight: bold;
+  // border: none;
+  //vertical-align: middle;
+}
+form.muskoka-form select option {
+}
+form.muskoka-form button {
+}
+form.muskoka-form input::-webkit-input-placeholder,
+form.muskoka-form textarea::-webkit-input-placeholder {
+  color: #cec3b6;
+}
+form.muskoka-form input:-moz-placeholder,
+form.muskoka-form textarea:-moz-placeholder {
+  color: #cec3b6;
+}
+
+form.muskoka-form input[type="submit"] {
+  display: block;
+  width: 200px;
+  height: 40px;
+  padding: 0px 20px 2px 20px;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  text-align: left;
+  font-family: $serif;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  line-height: 18px;
+  background-color: $red;
+  color: $light-red;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+form.muskoka-form input[type="checkbox"] {
+  // -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  // filter: alpha(opacity=0);
+  // -moz-opacity: 0;
+  // -khtml-opacity: 0;
+  // opacity: 0;
+  cursor: pointer;
+  height: 12px;
+  width: 12px;
+  vertical-align: top;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  background-color: transparent;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  border: 0;
+  z-index: 3;
+}
+form.muskoka-form div.custom-checkbox-container {
+  width: 15px;
+  height: 12px;
+  margin-top: 3px;
+  float: left;
+  margin-right: 3px;
+  position: relative;
+}
+form.muskoka-form div.custom-checkbox-hitarea {
+  height: 12px;
+  width: 12px;
+  box-shadow: inset 1px 1px 6px $brown;
+  -webkit-box-shadow: inset 1px 1px 6px $brown;
+  -moz-box-shadow: inset 1px 1px 6px $brown;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+form.muskoka-form div.custom-checkbox-checkmark {
+  background: transparent url('icon_checkmark.png') 0 0 no-repeat;
+  display: none;
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: -3px;
+  left: 2px;
+  z-index: 2;
+}
+form.muskoka-form div.custom-checkbox-container.selected div.custom-checkbox-checkmark {
+  display: block;
+}
+
+form.muskoka-form input[type="radio"] {
+}
+
+form.muskoka-form div.custom-select-container {
+  height: 25px !important;
+  width: 182px !important;
+  margin: 0;
+  padding: 0 8px 0 8px;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  box-shadow: 1px 1px 6px $brown;
+  -webkit-box-shadow: 1px 1px 6px $brown;
+  -moz-box-shadow: 1px 1px 6px $brown;
+  background: $biege url('icon_select_arrow.png') no-repeat scroll 173px 9px;
+  color: $dark-brown;
+  font-size: 12px;
+  font-weight: bold;
+  border: none;
+}
+form.muskoka-form div.custom-select-label {
+  padding: 3px 0 0 9px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  // Note that height and width are calculated by the Javascript JQuery plugin
+}
+
+
+/* Rows */
+/********************************/
+form.muskoka-form div.field,
+form.muskoka-form div.actions {
+  /*clear: both;*/
+}
+form.muskoka-form div.field:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+form.muskoka-form div.field {
+  position: relative;
+  border-bottom: 1px dotted $dark-biege;
+}
+form.muskoka-form div.actions {
+  margin-left: 240px;
+  padding: 15px 0 15px 0;
+}
+
+/* Columns */
+/* 3-column layout label, input, error */
+/********************************/
+form.muskoka-form div.label,
+form.muskoka-form div.input,
+form.muskoka-form div.error {
+  float: left;
+  width: 200px;
+  margin-left: 40px;
+  padding: 15px 0 15px 0;
+}
+form.muskoka-form div.label {
+  margin-left: 0;
+  padding-left: 10px;
+  width: 190px;
+  line-height: 14px;
+}
+form.muskoka-form div.input {
+  margin-left: 20px;
+  padding-left: 20px;
+}
+form.muskoka-form div.error {
+  padding-right: 10px;
+  width: 190px;
+  line-height: 14px;
+  font-weight: bold;
+}
+form.muskoka-form div.long {
+  width: 440px;
+  margin-left: 240px;
+  padding: 15px 0 15px 0;
+}
+form.muskoka-form div.actions div.button {
+  float: left;
+  width: 200px;
+  height: 40px;
+}
+form.muskoka-form div.actions div.extras {
+  float: left;
+  width: 230px;
+  height: 40px;
+  padding: 10px 0 0 10px;
+}
+
+
+/* Details */
+/********************************/
+form.muskoka-form div.label label {
+  display: block;
+  font-weight: bold;
+  float: left;
+  padding-right: 4px;
+}
+form.muskoka-form div.label span.optional {
+  font-weight: normal;
+  float: left;
+}
+form.muskoka-form div.label div.hint,
+form.muskoka-form div.long div.hint {
+  clear: both;
+  font-size: 11px;
+  line-height: 14px;
+  color: #bdae98;
+}
+form.muskoka-form div.label div.hint {
+}
+form.muskoka-form div.long div.hint {
+}
+
+
+/* Valid State */
+/********************************/
+form.muskoka-form div.field-is-valid {
+}
+form.muskoka-form div.field-is-valid div.input {
+  background: transparent url('icon_valid.png') 5px 23px no-repeat;
+}
+form.muskoka-form div.field-is-valid input,
+form.muskoka-form div.field-is-valid textarea {
+  border: 2px solid $valid-green;
+  margin: 0;
+}
+
+
+/* Error State */
+/********************************/
+form.muskoka-form div.field-with-errors {
+  background-color: #fff8e6;
+}
+form.muskoka-form div.field-with-errors div.label label,
+form.muskoka-form div.field-with-errors div.error {
+  color: $error-red;
+}
+form.muskoka-form div.field-with-errors div.input {
+  background: transparent url('icon_invalid.png') 5px 23px no-repeat;
+}
+form.muskoka-form div.field-with-errors input,
+form.muskoka-form div.field_with_errors input,
+form.muskoka-form div.field-with-errors textarea,
+form.muskoka-form div.field_with_errors textarea {
+  border: 2px solid $error-red;
+  margin: 0;
+}
+
+/* Rollovers */
+/*******************************/
+form.muskoka-form input[type="submit"]:hover,
+form.muskoka-form input[type="submit"]:focus,
+form.muskoka-form input[type="submit"]:active {
+  color: $dark-brown;
+  background-color: $dark-biege;
+}
+
+/* General Default Error + Success Messages */
+/********************************************/
+#error_explanation, #success_explanation {
+  border-bottom: 1px dotted $dark-biege;
+  padding-top: 5px;
+}
+#error_explanation h2, #success_explanation h2 {
+  font-size: 12px;
+  font-weight: bold;
+  font-family: $sans-serif;
+  margin: 0 0 5px 30px;
+  padding-top: 9px;
+}
+#error_explanation ul, #success_explanation ul {
+  margin: 5px 0 5px 50px;
+}
+#error_explanation ul li, #success_explanation ul li {
+  background: transparent url('bullet_error_list_item.png') 0 7px no-repeat;
+  line-height: 18px;
+  padding-left: 10px;
+  padding-bottom: 0;
+}
+#error_explanation p, #success_explanation p {
+  color: $brown;
+  padding: 0 20px 0 30px;
+  margin-bottom: 10px;
+}
+#error_explanation {
+  background: #fff8e6 url('icon_invalid.png') 15px 20px no-repeat;
+  color: $error-red;
+}
+#success_explanation {
+  background: #fff8e6 url('icon_valid.png') 15px 20px no-repeat;
+  color: $valid-green;
+  padding-bottom: 20px;
+}
+#error_explanation h2 {
+  color: $error-red;
+}
+#success_explanation h2 {
+  color: $valid-green;
+}
+
+form.muskoka-form div.error-messages {
+  background-color: #fff8e6;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-top: 1px dotted $dark-biege;
+  border-bottom: 1px dotted $dark-biege;
+
+  h2 {
+    color: $error-red;
+  }
+  p {
+  }
+  ul {
+    list-style-type: disc !important;
+    list-style: disc !important;
+    color: $error-red;
+
+    li {
+      margin-left: 20px !important;
+      list-style-type: disc !important;
+      list-style: disc !important;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+- content_for :title do
+  New Product
+
+= render 'form'
+
+- content_for :sidebar do
+  %p= link_to "Back to Product List", products_path

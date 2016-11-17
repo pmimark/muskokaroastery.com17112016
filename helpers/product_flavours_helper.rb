@@ -1,0 +1,2 @@
+module ProductFlavoursHelper
+end

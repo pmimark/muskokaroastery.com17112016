@@ -1,0 +1,35 @@
+- content_for :title do
+  = "#{ @product.name }:"
+  Flavours
+
+- if @product_flavours.size == 0
+  \- no flavours yet -
+- else
+  %ul{ :class => "sortable-flavours", 'data-product' => @product.id }
+    - @product_flavours.each do |product_flavour|
+      %li{ 'data-flavour' => product_flavour.id, :style => "border-top: 1px dotted #e0c298; padding-top: 10px;" }
+        %span.handle &nbsp;
+        %span{ :style => "margin-left: 5px; display: inline-block; width: 150px;" }= link_to product_flavour.name, product_product_flavour_path(@product, product_flavour)        
+        %span{ :style => "display: inline-block; width: 470px;" }= product_flavour.description
+        = link_to 'Edit', edit_product_product_flavour_path(@product, product_flavour)
+
+  / %table.admin
+  /   %tr
+  /     %th
+  /     %th Name
+  /     %th Description
+  /     %th
+  /   - @product_flavours.each do |product_flavour|
+  /     %tr{ :class => "#{ cycle('even', 'odd') }" }
+  /       %td
+  /         %span.handle &nbsp;
+  /       %td{ :style => "width: 150px;" }= link_to product_flavour.name, product_product_flavour_path(@product, product_flavour)        
+  /       %td= product_flavour.description
+  /       %td{ :style => "padding-right: 10px;" }= link_to 'Edit', edit_product_product_flavour_path(@product, product_flavour)
+
+- content_for :sidebar do
+  .feature-sidebar    
+    = link_to image_tag(@product.photo.url(:sidebar), :size => "164x97"), product_path(@product)
+  %p= link_to 'New Flavour', new_product_product_flavour_path(@product), :class => "feature-button"
+  %br
+  %p= link_to 'Back to Product List', products_path

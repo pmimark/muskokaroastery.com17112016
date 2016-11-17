@@ -1,0 +1,7 @@
+- content_for :title do
+  New Flavour
+
+= render 'form'
+
+- content_for :sidebar do
+  %p= link_to 'Back', product_product_flavours_path(@product)

@@ -1,0 +1,18 @@
+- content_for :title do
+  Editing Right Feature
+
+= simple_form_for @feature, :html => { :multipart => true } do |f|
+  = f.error_messages
+  = f.input :name
+  = f.input :body, :input_html => { :class => "tiny" }
+  = f.input :photo
+  - unless @feature.photo.url.blank?
+    .clearfix{ :style => "margin-left: 95px;" }
+      = image_tag @feature.photo.url(:featured)
+  = f.input :link_name
+  = f.input :link_url, :as => :string
+  = f.button :submit
+
+- content_for :sidebar do
+  %p= link_to 'Preview', @feature, :class => "feature-button"
+  %p= link_to 'Homepage', root_url

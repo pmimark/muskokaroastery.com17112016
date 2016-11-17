@@ -1,0 +1,15 @@
+- content_for :title do
+  Reset Password
+
+%p
+  Fill out the form below and instructions to reset your password will be emailed to you:
+
+= form_tag password_resets_path, :class => 'muskoka-form' do
+  .field
+    .label
+      %label{ :for => 'email' } Email
+    .input
+      = text_field_tag :email
+  .actions.clearfix  
+    .button
+      = submit_tag "Reset"

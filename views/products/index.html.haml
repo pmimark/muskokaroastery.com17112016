@@ -1,0 +1,57 @@
+- content_for :title do
+  - if @product_type
+    = @product_type.name
+  - else
+    = @page.name
+
+- unless @product_type
+  = image_tag "shop_packagingComposition.png", :alt => "Our products", class: 'main-product-image'
+
+#intro
+  =raw @page.intro
+
+=raw @page.body
+
+
+%hr{ :style => "margin-bottom: 40px;" }
+
+- number_of_products = @products.length - 1
+
+- if @products.length == 0
+  %b Sorry, we currently do not have any products in this category. Try viewing all the products on the
+  = link_to "main shop page", shop_path
+- else
+  - (0..number_of_products).step(3) do |i|
+    .clearfix.product-list-top
+      - for j in 0..2
+        - product = @products[i + j]
+        - unless product.blank?
+          %div{ :class => "#{ product_container(j) }" }
+            = link_to image_tag(product.photo.url(:square), :size => "184x184", :border => 0, :alt => product.name, :class => "featured-image"), shop_product_path(product.slug)
+            %h2
+              = "*" if product.is_active == false || product.is_special
+              = product.name
+            %p
+              %b.dark= product.roast_name.upcase
+              = product.description
+            %p= link_to "See Details", shop_product_path(product.slug), :class => "feature-button"
+
+    / .clearfix.product-list-bottom
+    /   - for j in 0..2
+    /     - product = @products[i + j]
+    /     - unless product.blank?
+    /       %div{ :class => "#{ product_container(j) }" }
+    /         %p= link_to "See Details", shop_product_path(product.slug), :class => "feature-button"
+
+- content_for :sidebar do
+  #shopping-cart-container
+    = render :partial => "shopping_cart/small_cart"
+  - if current_user && current_user.is_admin?
+    %hr
+    %p= link_to 'New Product', new_product_path, :class => "feature-button"
+    %br
+    %p= link_to "Change Order", order_products_path
+    %p= link_to "Edit Page Details", edit_page_path(@page)
+    / %p= link_to "Manage Flavours", product_flavours_path
+
+= render "floodlight_tags/shop"

@@ -1,0 +1,20 @@
+- content_for :title do
+  Listing Users
+
+%table.admin
+  %tr
+    %th Username
+    %th Email
+    %th
+    %th
+    %th
+
+  - @users.each do |user|
+    %tr{ :class => "#{ cycle("even", "odd") }" }
+      %td= user.username
+      %td= user.email      
+      %td= link_to 'Edit', edit_user_path(user)
+      %td= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete
+
+- content_for :sidebar do
+  %p= link_to "New User", new_user_path, :class => "feature-button"

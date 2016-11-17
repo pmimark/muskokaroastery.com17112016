@@ -1,0 +1,13 @@
+- if @order.order_status.name == "paid"
+  - content_for :title do
+    Order Paid
+  %p
+    The order you are looking for has already been paid.
+- else
+  - content_for :title do
+    Proceed to Make Payment
+  %p
+    If you are not redirected automatically within the next few seconds, please click the button below to proceed
+    to PayPal and complete your order.
+  #paypal-form-container
+    = render :partial => "paypal_form", :locals => { :order => @order }

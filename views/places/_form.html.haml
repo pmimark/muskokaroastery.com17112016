@@ -1,0 +1,17 @@
+= simple_form_for @place do |f|
+  = f.error_messages
+  = f.input :name
+  = f.input :address
+  = f.input :city, :input_html => { :style => "width: 200px;" }, :required => false
+  = f.input :province, :input_html => { :style => "width: 200px;" }, :required => false
+  = f.input :country, :priority => ["Canada", "United States"], :required => false
+  = f.input :postal, :label => "Postal/ZIP", :input_html => { :style => "width: 100px;" }, :required => false
+  = f.input :phone, :input_html => { :style => "width: 100px;" }, :required => false
+  = f.input :email, :required => false
+  = f.input :website, :label => "Website URL", :as => :string, :hint => "e.g., http://www.domainname.com"
+  = f.input :description, :input_html => { :class => "medium" }
+  %br
+  .clearfix
+    = f.input :contact, :label => "Contact Prsn", :hint => "(for internal use)"
+  = f.input :notes, :input_html => { :class => "tiny" }, :hint => "(for internal use)"
+  = f.button :submit

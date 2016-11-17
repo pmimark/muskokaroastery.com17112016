@@ -1,0 +1,60 @@
+@import "../variables";
+
+a.feature-button {
+  color: $red;
+  display: inline-block;
+  padding-left: 15px;
+  background: transparent image-url('icon_chevron.png') 0 3px no-repeat;
+}
+a.feature-button:link, a.feature-button:visited {}
+a.feature-button:hover, a.feature-button:focus, a.feature-button:active {}
+
+a.button {}
+a.button:link, a.button:visited {}
+a.button:hover, a.button:focus, a.button:active {}
+
+.no-border, img.no-border, #content img.no-border {
+  border: none;
+  padding: 0;
+  margin: 0;
+  float: none;
+}
+.disabled {
+  color: $brown;
+}
+tr.even td {
+  background-color: $footer-biege;
+}
+tr.odd td {
+  background-color: none;
+}
+div.positioning-arrows {
+  display: inline-block;
+}
+span.handle {
+  cursor: move;
+  background: transparent image-url('icon_gripper.png') 0 0 no-repeat;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-right: 2px;
+}
+
+.loading {
+  display: none;
+  background: transparent image-url('ajax-loader.gif') 0 3px no-repeat;
+  padding: 0 0 0 25px;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.light {
+  color: $brown !important;
+}
+
+// .forgot-password-link {
+//   color: $brown !important;
+// }

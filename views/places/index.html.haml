@@ -1,0 +1,28 @@
+- content_for :title do
+  Listing Places
+
+%table.admin{ :style => "width: 100%" }
+  %tr
+    %th Name
+    %th Contact
+    %th Phone
+    %th Email
+    %th
+    %th
+    %th
+
+  - @places.each do |place|
+    %tr{ :class => "#{ cycle("even", "odd") }" }
+      %td
+        %b= place.name
+      %td= place.contact
+      %td= place.phone
+      %td= link_to "Email", "mailto:#{ place.email }" unless place.email.blank?
+      %td= link_to 'Show', place
+      %td= link_to 'Edit', edit_place_path(place)
+      %td= link_to 'Destroy', place, :confirm => 'Are you sure?', :method => :delete
+%hr
+= paginate @places
+
+- content_for :sidebar do
+  %p= link_to 'New Place', new_place_path, :class => "feature-button"

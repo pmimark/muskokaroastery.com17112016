@@ -1,0 +1,9 @@
+- content_for :title do
+  Editing Image
+
+= render "form"
+
+- content_for :sidebar do
+  %p= link_to 'Preview', @image, :class => "feature-button"
+  %br
+  %p= link_to "Back to List", images_path

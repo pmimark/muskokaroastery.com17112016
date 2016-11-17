@@ -1,0 +1,6 @@
+%h2= feature.name
+= link_to image_tag(feature.photo.url(:sidebar), :size => "164x97"), feature.link_url
+%p
+  = feature.body
+  %br
+  = link_to feature.link_name.downcase, feature.link_url

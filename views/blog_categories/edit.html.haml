@@ -1,0 +1,7 @@
+- content_for :title do
+  Editing Blog Category
+
+= render "form"
+
+- content_for :sidebar do
+  %p= link_to "List Blog Categories", blog_categories_path

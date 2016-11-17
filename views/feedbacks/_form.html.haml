@@ -1,0 +1,6 @@
+= simple_form_for @feedback do |f|
+  = f.error_messages
+  = f.input :name
+  = f.input :email
+  = f.input :comment, :input_html => { :class => "medium" }
+  = f.button :submit

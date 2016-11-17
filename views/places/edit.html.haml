@@ -1,0 +1,8 @@
+- content_for :title do
+  Editing Place
+
+= render 'form'
+
+- content_for :sidebar do
+  %p= link_to 'Preview', @place, :class => "feature-button"
+  %p= link_to 'Back', places_path

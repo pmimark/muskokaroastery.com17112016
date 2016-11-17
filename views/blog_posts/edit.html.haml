@@ -1,0 +1,9 @@
+- content_for :title do
+  Editing Blog Post
+
+= render "form"
+
+- content_for :sidebar do
+  %p= link_to "Preview Blog Post", @blog_post, :class => "feature-button"
+  %br
+  %p= link_to "Back to Blog List", blog_path

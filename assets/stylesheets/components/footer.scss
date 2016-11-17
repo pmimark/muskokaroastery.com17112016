@@ -1,0 +1,105 @@
+@import "../variables";
+
+footer {
+  background-color: $footer-biege;
+  color: $footer-brown;
+  clear: both;
+}
+#sitemap {
+  line-height: 14px;
+}
+#sitemap li {
+  float: left;
+  width: 143px;
+  padding: 40px 20px 40px 20px;
+}
+#sitemap li ul li {
+  width: 100%;
+  float: none;
+  display: block;
+  padding: 7px 0 0 0;
+}
+#more {
+  clear: both;
+  border-top: 1px dotted $footer-brown;
+  padding-top: 10px;
+  padding-bottom: 200px;
+  height: 50px;
+}
+footer #more { padding-bottom:0;}
+#copyright {
+  float: left;
+  width: 70%;
+}
+#copyright li {
+  display: inline-block;
+  margin-right: 20px;
+}
+// #credits {
+//   float: right;
+//   width: 30%;
+//   text-align: right;
+// }
+#social {
+  float: right;
+  width: 30%;
+  text-align: right; }
+#social a {
+  display: inline-block;
+  height: 35px;
+  width: 35px;
+  text-indent: -9999px;
+  color: transparent !important;
+  overflow: hidden;
+  margin-left: 8px;
+  background-position: center center;
+  background-size: 25px;
+  background-repeat: no-repeat;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+#social a.rainforest-alliance {
+  background-image: image-url('social-rainforest-alliance2.svg');
+  background-color: #4d917a;
+  background-size: 27px;
+  //background-position: 0 0;
+}
+#social a.twitter {
+  background-image: image-url('social-twitter.svg');
+  background-color: #55acee;
+}
+#social a.facebook {
+  background-image: image-url('social-facebook.svg');
+  background-color: #3b5998;
+}
+#social a.instagram {
+  background-image: image-url('social-instagram.svg');
+  background-color: #3f729b;
+}
+// #social a.rainforest-alliance:hover,
+// #social a.rainforest-alliance:active {
+//   background-image: image-url('social-icon-rainforest-alliance-hover.png');
+// }
+// #social a.twitter:hover,
+// #social a.twitter:active {
+//   background-image: image-url('social-icon-twitter-hover.png');
+// }
+// #social a.facebook:hover,
+// #social a.facebook:active {
+//   background-image: image-url('social-icon-facebook-hover.png');
+// }
+
+/* Footer Sitemap */
+#sitemap a {
+  font-weight: normal;
+}
+#sitemap h5 a {
+  font-weight: bold;
+}
+footer a:link, footer a:visited {
+  color: $footer-brown;
+}
+footer a:hover, footer a:focus, footer a:active {
+  color: $dark-footer-brown;
+}

@@ -1,0 +1,89 @@
+Order Receipt from Muskoka Roastery Coffee Company
+===========================================================
+Thank you for your order. This email is a confirmation and
+receipt that your order has been accepted by our system
+and is currently moving through our shipment process to be
+delivered to the shipping address you provided us.
+
+Please keep a copy of this email for your own records and
+refer to your receipt number during any correspondence
+between us so that we may help you more efficiently.
+
+Receipt Number
+===========================================================
+#<%= @order.id %>
+
+
+Your Order
+===========================================================
+<%- @order.line_items.each_with_index do |item, i| %>
+  Product Name: <%= item.item_name %>
+  Type: <%= item.item_option %>
+  Flavour: <%= item.item_flavour %>
+  Quantity: <%= item.quantity %>
+  Unit Price: <%= number_to_currency item.item_price %>
+  Total: <%= number_to_currency item.item_price * item.quantity %>
+-----------------------------------------------------------
+<%- end %>
+Subtotal: <%= number_to_currency @order.subtotal %>
+Shipping Fees: <%= number_to_currency @order.shipping_fees %>
+-----------------------------------------------------------
+Total: <%= number_to_currency @order.total %>
+-----------------------------------------------------------
+
+
+Billing Address
+===========================================================
+<%- if @order.address_optional.blank? %>
+  <%= @order.address %>
+<%- else %>
+  <%= @order.address + ", " + @order.address_optional %>
+<%- end %>
+<%= @order.city + ", " + @order.province %>
+<%= @order.country %>
+<%= @order.postal %>
+-----------------------------------------------------------
+<%= @order.phone %>
+-----------------------------------------------------------
+<%- if @order.billing_same_as_shipping %>
+
+
+(shipping address is the same as billing address)
+<%- else %>
+
+
+Shipping Address
+===========================================================
+<%= @order.shipping_name %>
+  <%- if @order.shipping_address_optional.blank? %>
+<%= @order.shipping_address %>
+  <%- else %>
+<%= @order.shipping_address + ", " + @order.shipping_address_optional %>
+  <%- end %>
+<%= @order.shipping_city + ", " + @order.shipping_province %>
+<%= @order.shipping_country %>
+<%= @order.shipping_postal %>
+-----------------------------------------------------------
+<%= @order.shipping_phone %>
+<%- end %>
+
+
+Order Received
+===========================================================
+<%= @order.created_at.strftime("%e %B %Y @%l:%M%P") %>
+
+
+Thank you again for your interest in the Muskoka Roastery
+Coffee Company. We hope you enjoy our coffee as much
+as we do!
+
+
+Muskoka Roastery Coffee Company
+===========================================================
+8 Crescent Road
+Huntsville, ON, Canada
+P1H 0B3
+
+1.866.521.9592
+
+info@muskokaroastery.com

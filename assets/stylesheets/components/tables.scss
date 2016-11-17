@@ -1,0 +1,61 @@
+@import "../variables";
+
+table.listing {
+  width: 100%;
+}
+table.listing caption {
+  text-align: left;
+  margin-bottom: 10px;
+}
+table.listing tbody {
+}
+table.listing tbody tr {
+  border-top: 1px dotted $dark-biege;
+}
+table.listing tbody tr:first-child {
+  border: none;
+}
+table.listing tbody td {
+  vertical-align: top;
+  padding: 10px 0 10px 0;
+}
+table.listing tbody td.left {
+  text-align: left;
+}
+table.listing tbody td.right {
+  text-align: right;
+}
+.light-brown {
+  color: $brown !important;
+}
+
+span.place-distance {
+}
+table.listing tbody h3 {
+  margin-bottom: 0;
+}
+
+// Other tables
+table#contact-info {
+  width: 100%;
+}
+table#contact-info td {
+  width: 200px;
+  padding-right: 40px;
+}
+table#contact-info td:last-child {
+  padding-right: 0;
+}
+
+/* Temporary Phase 1 Styles */
+/****************************/
+table.temp_store {
+  width: 190px;
+}
+table.temp_store td:first-child {
+  text-align: right;
+  padding-right: 10px;
+}
+table.temp_store td {
+  padding-bottom: 10px;
+}

@@ -1,0 +1,72 @@
+.field
+  .label
+    = f.label :name, "Name"
+    .hint Your full name.
+  .input
+    = f.text_field :name, :placeholder => "John Smith", :value => (current_user.name if current_user)
+  .error
+.field
+  .label
+    = f.label :company, "Company Name"
+    .optional (optional)
+    .hint If you are ordering for a business.
+  .input
+    = f.text_field :company, :placeholder => "Acme Corp.", :value => (current_user.company if current_user)
+  .error
+.field
+  .label
+    = f.label :email, "Email Address"
+    .hint If we need to contact you.
+  .input
+    = f.text_field :email, :placeholder => "johnsmith@yourdomain.com", :value => (current_user.email if current_user)
+  .error
+.field
+  .label
+    = f.label :address, "Street Address"
+    .hint Where your bills are delivered.
+  .input
+    = f.text_field :address, :placeholder => "123 Main Street", :value => (current_user.address if current_user)
+  .error
+.field
+  .label
+    = f.label :address_optional, "Apt., Suite, Bldg."
+    .optional (optional)
+    .hint Or any special instructions.
+  .input
+    = f.text_field :address_optional, :placeholder => "Apt. #345, South Bldg.", :value => (current_user.address_optional if current_user)
+  .error
+.field
+  .label
+    = f.label :city
+    .hint Where you live.
+  .input
+    = f.text_field :city, :placeholder => "Toronto", :value => (current_user.city if current_user)
+  .error
+.field
+  .label
+    = f.label :province
+    .hint Province, State, Territory, County.
+  .input
+    = f.text_field :province, :placeholder => "Ontario", :value => (current_user.province if current_user)
+  .error
+.field
+  .label
+    = f.label :country
+    .hint Where you are in the world.
+  .input
+    = country_select "order", "country", ["Canada", "United States"] # Default value for this field is set in the controller on the @order model to make this work.
+  .error
+.field
+  .label
+    = f.label :postal, "Postal Code"
+    .hint Post Code or ZIP
+  .input
+    = f.text_field :postal, :placeholder => "M6G 3B2", :value => (current_user.postal if current_user)
+  .error
+.field
+  .label
+    = f.label :phone, "Telephone Number"
+    .hint Only used in case of delivery issues.
+  .input
+    = f.text_field :phone, :placeholder => "416.123.4567", :value => (current_user.phone if current_user)
+  .error

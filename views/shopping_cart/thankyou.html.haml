@@ -1,0 +1,18 @@
+- content_for :title do
+  Thank you
+
+%p
+  Your order was successfully completed. 
+  - if @reference_number
+    Your reference number is:
+    %b{ :style => "font-size: 16px;" }= @reference_number
+%p
+  Once your order is placed, the Muskoka Roastery will handcraft your coffee within 2 business days and ship it 
+  to you by Canada Post. Approximate delivery times are: Ontario (2-3 days), balance of Canada (3-5 days), USA (6 days) 
+  and International (6-8 weeks).
+%p
+  If you have any questions or concerns about your order, please feel free to
+  =raw link_to "contact us", "/company/contact-us"
+  at any time and cite your reference number. We will be happy to help you in whatever way we can.
+
+= render "floodlight_tags/thank_you"

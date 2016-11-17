@@ -1,0 +1,50 @@
+.field
+  .label
+    = f.label :shipping_address, "Street Address"
+    .hint Where the coffee should go.
+  .input
+    = f.text_field :shipping_address, :placeholder => "123 Main Street"
+  .error
+.field
+  .label
+    = f.label :shipping_address_optional, "Apt., Suite, Bldg."
+    .optional (optional)
+    .hint Or any special instructions.
+  .input
+    = f.text_field :shipping_address_optional, :placeholder => "Apt. #345, South Bldg."
+  .error
+.field
+  .label
+    = f.label :shipping_city
+    .hint Where the coffee will be shipped.
+  .input
+    = f.text_field :shipping_city, :placeholder => "Toronto"
+  .error
+.field
+  .label
+    = f.label :shipping_province
+    .hint Province, State, Territory, County.
+  .input
+    = f.text_field :shipping_province, :placeholder => "Ontario"
+  .error
+.field
+  .label
+    = f.label :shipping_country
+    .hint Where in the world.
+  .input
+    = country_select("user", "shipping_country", ["Canada", "United States"])
+  .error
+.field
+  .label
+    = f.label :shipping_postal, "Postal Code"
+    .hint Post Code or ZIP
+  .input
+    = f.text_field :shipping_postal, :placeholder => "M6G 3B2"
+  .error
+.field
+  .label
+    = f.label :shipping_phone, "Telephone Number"
+    .hint Only used in case of delivery issues.
+  .input
+    = f.text_field :shipping_phone, :placeholder => "416.123.4567"
+  .error

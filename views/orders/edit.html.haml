@@ -1,0 +1,8 @@
+- content_for :title do
+  Editing Order
+
+= render 'form'
+
+- content_for :sidebar do
+  %p= link_to 'Show Order', @order, :class => "feature-button"
+  %p= link_to 'Back', orders_path

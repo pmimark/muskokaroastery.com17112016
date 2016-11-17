@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @discount.name
+%p
+  %b Percentage:
+  = @discount.percentage
+%p
+  %b Expires At:
+  = @discount.expires_at.strftime('%e %B, %Y')
+
+= link_to 'Edit', edit_discount_path(@discount)
+\|
+= link_to 'Back', discounts_path

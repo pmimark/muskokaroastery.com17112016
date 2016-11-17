@@ -1,0 +1,18 @@
+%li#cart-shipping-info.clearfix.cart-item-container
+  %h3= link_to "Shipping Costs", "/company/shipping-rates"
+  .cart-shipping-item
+    .cart-shipping-name
+      Canada
+    .cart-shipping-price
+      %b= number_to_currency ShippingRate.where(:country_code => "CA").first.price
+  .cart-shipping-item
+    .cart-shipping-name
+      United States
+    .cart-shipping-price
+      %b= number_to_currency ShippingRate.where(:country_code => "US").first.price
+  .cart-shipping-item
+    .cart-shipping-name
+      International
+    .cart-shipping-price
+      %b= number_to_currency ShippingRate.where(:country_code => "INT").first.price
+      = "/ #{ DynamicSetting.find_by_name("shipping_rate_multiple").value } lb"

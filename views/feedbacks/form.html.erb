@@ -1,0 +1,67 @@
+<form accept-charset="UTF-8" action="/feedbacks" class="simple_form feedback" id="new_feedback" method="post">
+  <div style="margin:0;padding:0;display:inline">
+    <input name="utf8" type="hidden" value="&#x2713;" />
+    <input name="authenticity_token" type="hidden" value="ljFwEhOTu34tS+hQrflShilKzoyOQH0Jy8PPxGrN/Qw=" />
+  </div>
+
+  <div class="input string required">
+    <label class="string required" for="feedback_name">
+      <abbr title="required">*</abbr>
+      Name
+    </label>
+    <input class="string required" id="feedback_name" maxlength="255" name="feedback[name]" required="required" size="50" type="text" />
+    <span class="hint">So we can refer to you appropriately.</span>
+  </div>
+
+  <div class="input string email optional"><label class="email optional" for="feedback_email"> Email Address</label><input class="string email optional" id="feedback_email" maxlength="255" name="feedback[email]" size="50" type="email" /><span class="hint">So we can reply back to you.</span></div>
+  <div class="input text optional"><label class="text optional" for="feedback_comment"> Message</label><textarea class="text optional" cols="40" id="feedback_comment" name="feedback[comment]" rows="20"></textarea><span class="hint">Tell us a story about yourself, ask us a question, give us feedback onhow we can makeyour experience better, or just say hello.</span></div>
+  <input class="button" id="feedback_submit" name="commit" type="submit" value="Create Feedback" />
+</form>
+
+
+<form accept-charset="UTF-8" action="/pages/15" class="simple_form page" id="edit_page_15" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="l2e14PSAyd09SDxXDvoQLx7sBa/4CZMUymqBDKF+/Zg=" /></div>
+
+  <div class="error-messages">
+    <h2>Invalid Fields</h2>
+    <p>Correct the following errors and try again.</p>
+    <ul>
+      <li>Name can't be blank</li>
+    </ul>
+  </div>
+
+  <div class="input string required field_with_errors">
+    <label class="string required" for="page_name">
+      <abbr title="required">*</abbr>
+      Page Title
+    </label>
+    <input class="string required" id="page_name" maxlength="255" name="page[name]" required="required" size="50" type="text" value="" />
+    <span class="error">can't be blank</span>
+  </div>
+            <div class='editor-area'>
+              <textarea class="tinymce small" cols="40" id="page_intro" name="page[intro]" rows="20">&lt;p&gt;We are continually surprised by the amount of mis-information out there on the fairly straight-forward subject of how to store coffee.&lt;/p&gt;</textarea>
+            </div>
+            <div class='editor-area'>
+              <textarea class="tinymce" cols="40" id="page_body" name="page[body]" rows="20">&lt;p&gt;The scientific facts are not in dispute- exposure to oxygen, moisture, sunlight and heat will cause your coffee to stale over time. Ground coffee is more susceptible than whole beans, simply because there is more surface area exposed to the elements.&lt;/p&gt;&#x000A;&lt;p&gt;Our coffee is sold in a bag which provides a barrier that will not allow any of these elements to come into contact with the product before opening. So, the following storage tips relate to the coffee once opened.&lt;/p&gt;&#x000A;&lt;ul&gt;&#x000A;&lt;li&gt; &lt;strong&gt;Store at room temperature&lt;/strong&gt;,&amp;nbsp;not over a heat source or in the refrigerator or in the freezer. &lt;/li&gt;&#x000A;&lt;li&gt; &lt;strong&gt;Keep the product in the Muskoka Roastery bag&lt;/strong&gt; and fold the top down tightly to eliminate as much air from the pack as possible. Use the tin tie and/or wrap an elastic band around the rolled bag. &lt;/li&gt;&#x000A;&lt;li&gt; &lt;strong&gt;Put the bag in a ceramic storage container&lt;/strong&gt;,&amp;nbsp;ideally not much bigger than the bag.&lt;/li&gt;&#x000A;&lt;/ul&gt;&#x000A;&lt;p&gt;If you don&amp;rsquo;t use 1lb of coffee within a 2 week period, we suggest that you exclusively buy whole beans and purchase a grinder or &amp;lsquo;bean to cup&amp;rsquo; machine with an integrated grinder to extend the product freshness as long as possible.&lt;/p&gt;</textarea>
+            </div>
+            <div class="input radio required"><label class="radio required" for="page_section_id"><abbr title="required">*</abbr> Section</label><label class="collection_radio" for="page_section_id_1"><input class="radio required" id="page_section_id_1" name="page[section_id]" required="required" type="radio" value="1" />Meet</label><label class="collection_radio" for="page_section_id_2"><input checked="checked" class="radio required" id="page_section_id_2" name="page[section_id]" required="required" type="radio" value="2" />Learn</label><label class="collection_radio" for="page_section_id_3"><input class="radio required" id="page_section_id_3" name="page[section_id]" required="required" type="radio" value="3" />Shop</label><label class="collection_radio" for="page_section_id_4"><input class="radio required" id="page_section_id_4" name="page[section_id]" required="required" type="radio" value="4" />Sustain</label><label class="collection_radio" for="page_section_id_5"><input class="radio required" id="page_section_id_5" name="page[section_id]" required="required" type="radio" value="5" />Blog</label><label class="collection_radio" for="page_section_id_6"><input class="radio required" id="page_section_id_6" name="page[section_id]" required="required" type="radio" value="6" />None</label></div>
+            <div class="input string optional"><label class="string optional" for="page_keywords"> Keywords</label><input class="string optional" id="page_keywords" maxlength="255" name="page[keywords]" size="50" type="text" value="" /></div>
+            <div class="input string optional"><label class="string optional" for="page_description"> Description</label><input class="string optional" id="page_description" maxlength="255" name="page[description]" size="50" type="text" value="" /></div>
+            <input class="button" id="page_submit" name="commit" type="submit" value="Update Page" />
+          </form>
+
+<form accept-charset="UTF-8" action="/feedbacks" class="simple_form feedback" id="new_feedback" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="ljFwEhOTu34tS+hQrflShilKzoyOQH0Jy8PPxGrN/Qw=" /></div>
+
+  <div class="input string required">
+    <label class="string required" for="feedback_name"><abbr title="required">*</abbr> Name</label>
+    <div class="hint">So we can refer to you appropriately.</div>
+    <input class="string required" id="feedback_name" maxlength="255" name="feedback[name]" required="required" size="50" type="text" />
+    <div class="error">Something went wrong</div>
+  </div>
+
+<div class="input string email optional"><label class="email optional" for="feedback_email"> Email Address</label><div class="hint">So we can reply back to you.</div><input class="string email optional" id="feedback_email" maxlength="255" name="feedback[email]" size="50" type="email" /></div>
+  <div class="input text optional"><label class="text optional" for="feedback_comment"> Message</label><div class="hint">Tell us a story about yourself, ask us a question, give us feedback onhow we can makeyour experience better, or just say hello.</div><textarea class="text optional" cols="40" id="feedback_comment" name="feedback[comment]" rows="20"></textarea></div>
+  <input class="button" id="feedback_submit" name="commit" type="submit" value="Create Feedback" />
+</form>
+
+<%= tinymce %>
+

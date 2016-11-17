@@ -1,0 +1,22 @@
+#global-menu
+  = link_to "Where to Buy", where_to_buy_path
+  = link_to "Contact Us", show_no_page_path("contact-us")
+#global-shopping-cart
+  #global-shopping-cart-top
+    = image_tag "icon_global_cart.png", :size => "21x21", :alt => "Global Shopping Cart", :id => "shopping-cart-icon"
+    #global-total-items
+      = @cart.total_items
+    #global-items
+      items
+    #global-price-total
+      - if @cart.total_price == 0
+        $0.00
+      - else
+        //= number_to_currency @cart.total_price + @estimated_shipping_fees
+        = number_to_currency @cart.total_price
+  #global-shopping-cart-bottom
+    - if @cart.total_items == 0
+      = button_to "Cart Empty", shop_checkout_path, :id => "global-checkout-button", :class => "empty"
+    - else
+      = button_to "Review Order".html_safe, shop_checkout_path, :id => "global-checkout-button", :method => :get
+      = button_to "Order".html_safe, shop_checkout_path, :id => "global-checkout-button-small", :method => :get

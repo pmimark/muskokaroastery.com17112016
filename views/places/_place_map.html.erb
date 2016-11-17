@@ -1,0 +1,12 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    var latlng = new google.maps.LatLng(<%= place.latitude %>, <%= place.longitude %>);
+    $("#google-map-preview").gmap({
+      center: latlng,
+      zoom: 14,
+      callback: function() {
+        $("#google-map-preview").gmap("addMarker", { position: latlng });
+      }
+    });
+  });
+</script>

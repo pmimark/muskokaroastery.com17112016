@@ -1,0 +1,14 @@
+- content_for :title do
+  = @user.username
+
+%p
+  %b Username:
+  = @user.username
+%p
+  %b Email:
+  = @user.email
+
+- content_for :sidebar do
+  %p= link_to 'Edit', edit_user_path(@user), :class => "feature-button"
+  %br
+  %p= link_to 'Back', users_path

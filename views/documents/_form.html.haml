@@ -1,0 +1,9 @@
+= simple_form_for @document, :html => { :multipart => true } do |f|
+  = f.error_messages
+  .inputs
+    - unless @document.attachment.blank? || @document.attachment.url == "/attachments/original/missing.png"
+      %p= link_to @document.attachment.url, @document.attachment.url
+    = f.input :attachment
+    = f.input :name, :required => false, :label => "Caption"
+  .actions
+    = f.button :submit

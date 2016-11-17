@@ -1,0 +1,8 @@
+- content_for :title do
+  Previewing Background
+
+- content_for :sidebar do
+  = link_to "Edit", edit_background_path(@background)
+  %br
+  %br
+  = link_to "Back", backgrounds_path

@@ -1,0 +1,8 @@
+- posts.each do |post|
+  %article
+    %h3= post.name
+    %time{ :datetime => post.datetime_html5 }
+      = post.date_homepage
+    %p
+      =raw truncate(strip_tags(post.body), :length => 85)
+    = link_to "Read More", blog_post_show_path(post.slug)

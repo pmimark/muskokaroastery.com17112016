@@ -1,0 +1,17 @@
+$("#cart-<%= @item_id %> .cart-item-wrapper").slideUp("fast", function() {
+  $("#cart-<%= @item_id %>").remove();
+});
+
+$("#order-review-subtotal-price").html("<%= number_to_currency @cart.subtotal %>");
+$("#order-review-total-price").html("<%= number_to_currency @cart.total_price + @estimated_shipping_fees %>");
+
+<% if @cart.total_items == 0 %>
+    $("#order-review-shipping-price").html("<%= number_to_currency 0 %>");
+  $("#global-total-items").html("0");
+  $("#global-price-total").html("$0.00");
+  $("#global-checkout-button").addClass("empty");
+<% else %>
+  $("#order-review-shipping-price").html("<%= number_to_currency @estimated_shipping_fees %>");
+  $("#global-total-items").html("<%= @cart.total_items %>");
+  $("#global-price-total").html("<%= number_to_currency @cart.total_price + @estimated_shipping_fees %>");
+<% end %>

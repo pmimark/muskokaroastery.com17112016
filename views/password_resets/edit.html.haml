@@ -1,0 +1,24 @@
+- content_for :title do
+  Change Your Password
+
+%p
+  Enter a new password and submit the form to update your website account.
+
+= form_for @user, :url => password_reset_path, :method => :put, :html => { :class => 'muskoka-form' } do |f|
+  = f.error_messages
+  .field
+    .label
+      = f.label :password
+    .input
+      = f.password_field :password
+  .field
+    .label
+      = f.label :password_confirmation
+    .input
+      = f.password_field :password_confirmation
+  .actions.clearfix
+    .button  
+      = f.submit "Update"
+    .extras
+      or
+      = link_to 'cancel', root_url

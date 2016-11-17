@@ -1,0 +1,11 @@
+.newsletter-signup-bar
+  .newsletter-signup-container
+    #newsletter-signup-label
+      %h2 Get access to our limited editions
+      .description Sign-up for our quarterly newsletter and become an insider.
+    = form_tag newsletter_signup_path, :class => 'muskoka-form newsletter-signup', :id => 'newsletter-signup-form' do
+      = text_field_tag :email_address, '', :placeholder => 'Your email address', :id => 'newsletter-signup-input'
+      = submit_tag 'Sign up', :id => 'newsletter-signup-submit'
+    #newsletter-signup-loading
+    #newsletter-signup-confirmed
+      %h2 Thank you for subscribing to the Muskoka Roastery newsletter

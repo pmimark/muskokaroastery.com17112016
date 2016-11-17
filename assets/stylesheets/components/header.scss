@@ -1,0 +1,51 @@
+@import "../variables";
+
+header {
+  background-color: $black;
+}
+#global {
+  height: 98px;
+}
+#logo {
+  float: left;
+  margin-top: 16px;
+  width: 200px;
+
+  img {
+    width: 198px;
+    height: 66px;
+  }
+}
+#shopping-cart {
+  float: right;
+  /*display: none;*/
+}
+header nav {
+  height: 40px;
+  background-color: $red;
+}
+header nav ul {
+  border-left: 1px solid $dark-red;
+}
+header nav li {
+  float: left;
+  border-right: 1px solid $dark-red;
+  position: relative;
+}
+header nav li:hover ul {
+  display:block;
+}
+header nav ul ul {
+  border: none;
+  position: absolute;
+  left: 0;
+  z-index: 5;
+  background-color: $dark-biege;
+  width: 183px;
+  display: none;
+}
+header nav ul ul li {
+  float: none;
+  border: none;
+  border-top: 1px solid $snav-border-biege;
+}

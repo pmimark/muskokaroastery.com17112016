@@ -1,0 +1,16 @@
+- content_for :title do
+  Change Product Order
+
+%ul.sortable-products
+  - @products.each do |product|
+    %li{ "data-product" => product.id }
+      %span.handle
+      %span.product-order-name
+        - unless product.is_active
+          *
+        %b= product.name
+      %span.product-order-type
+        = "(#{ product.product_type.name })"
+
+- content_for :sidebar do
+  %p= link_to "Back to Product List", products_path

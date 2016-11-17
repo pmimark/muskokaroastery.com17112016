@@ -1,0 +1,104 @@
+!!! 5
+%html
+  %head
+    %meta{ :charset => "utf-8" }
+  %body
+    %h1 Order Receipt from Muskoka Roastery Coffee Company
+    %div
+      %p
+        Thank you for your order. This email is a confirmation and
+        receipt that your order has been accepted by our system
+        and is currently moving through our shipment process to be
+        delivered to the shipping address you provided us.
+      %p
+        Please keep a copy of this email for your own records and
+        refer to your receipt number during any correspondence
+        between us so that we may help you more efficiently.
+      %br
+      %h2 Receipt Number
+      = "##{ @order.id }"
+      %br
+      %h2 Order
+      %table
+        %tr
+          %th{ :align => "left" } Product Name
+          %th{ :align => "left" } Type
+          %th{ :align => "left" } Flavour
+          %th{ :align => "left" } Quantity
+          %th{ :align => "left" } Unit Price
+          %th{ :align => "left" } Total
+        - @order.line_items.each do |item|
+          %tr
+            %td{ :style => "padding-right: 10px;" }= item.item_name
+            %td{ :style => "padding-right: 10px;" }= item.item_option
+            %td{ :style => "padding-right: 10px;" }= item.item_flavour
+            %td{ :style => "padding-right: 10px;" }= item.quantity.to_s
+            %td{ :style => "padding-right: 10px;" }= number_to_currency item.item_price
+            %td{ :style => "padding-right: 10px;" }= number_to_currency item.item_price * item.quantity
+        %tr
+          %td{ :colspan => 5 }
+            Subtotal
+          %td
+            = number_to_currency @order.subtotal
+        %tr
+          %td{ :colspan => 5 }
+            Shipping Fees
+          %td
+            = number_to_currency @order.shipping_fees
+        %tr
+          %td{ :colspan => 5 }
+            Total
+          %td
+            %b= number_to_currency @order.total
+      %br
+      %h2 Billing Address
+      %p
+        = @order.address
+        = ", " + @order.address_optional unless @order.address_optional.blank?
+        %br
+        = @order.city + ", " + @order.province
+        %br
+        = @order.country
+        %br
+        = @order.postal
+      %p
+        = @order.phone
+      %br
+
+      - if @order.billing_same_as_shipping
+        %b (shipping address is the same as billing address)
+      - else
+        %h2 Shipping Address
+        %p
+          = @order.shipping_name
+          %br
+          = @order.shipping_address
+          = ", " + @order.shipping_address_optional unless @order.shipping_address_optional.blank?
+          %br
+          = @order.shipping_city + ", " + @order.shipping_province
+          %br
+          = @order.shipping_country
+          %br
+          = @order.shipping_postal
+        %p
+          = @order.shipping_phone
+      %br
+      %h2 Order Received
+      = @order.created_at.strftime("%e %B %Y @%l:%M%P")
+      %br
+      %p
+        Thank you again for your interest in the Muskoka Roastery
+        Coffee Company. We hope you enjoy our coffee as much
+        as we do!
+      %br
+      %h2 Muskoka Roastery Coffee Company
+      %p
+        8 Crescent Road
+        %br
+        Huntsville, ON, Canada
+        %br
+        P1H 0B3
+      %p
+        1.866.521.9592
+      %p
+        = link_to "info@muskokaroastery.com", "mailto:info@muskokaroastery.com"

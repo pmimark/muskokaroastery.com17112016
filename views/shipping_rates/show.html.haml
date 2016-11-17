@@ -1,0 +1,16 @@
+%p
+  %b Name:
+  = @shipping_rate.name
+%p
+  %b Country code:
+  = @shipping_rate.country_code
+%p
+  %b Price:
+  = @shipping_rate.price
+%p
+  %b Free Shipping Threshold:
+  = @shipping_rate.free_price
+
+= link_to 'Edit', edit_shipping_rate_path(@shipping_rate)
+\|
+= link_to 'Back', shipping_rates_path

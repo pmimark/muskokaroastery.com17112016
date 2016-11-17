@@ -1,0 +1,67 @@
+- content_for :title do
+  Where to Buy
+
+%p
+  This locator shows stores carrying Muskoka Roastery coffee throughout Ontario and the Atlantic provinces of Canada.
+  -# At this point, Muskoka Roastery coffee is available in stores throughout Ontario and the Atlantic
+  -# provinces of Canada. If you are located elsewhere, we invite you to use our
+  -# =raw "#{ link_to "online shop service", "/shop" }."
+%p
+Enter your town, city, or community to locate stores near you. The more detail you can provide, the better your results will be.
+%hr
+#where-to-buy-search-form-container.clearfix
+  = form_tag where_to_buy_search_path, :class => "muskoka-form", :id => "where-to-buy-search-form", :method => "get" do
+    %input{ :type => "text", :value => "", :name => "search_place", :id => "where-to-buy-search-field", :placeholder => "123 Main Street, Anytown, USA" }
+    = submit_tag "Find", :id => "where-to-buy-search-button"
+  .loading
+    Searching. Please wait.
+
+#google-map-where-to-buy
+
+#where-to-buy-search-results-listing
+  - if @search_place.blank? || @search_place.gmaps == false
+    - unless @dont_show_sorry_message
+      %p
+        %b
+          Sorry, no search results matched your query. Please try adding more details, like province/state
+          and country to help us narrow down your search.
+  - else
+    %table.listing
+      %tbody
+        - @places.each_with_index do |place, i|
+          %tr
+            %td.left
+              = image_tag "pin_#{ @letters[i] }.png", :size => "20x34", :alt => "#{ @letters[i] }", :style => "border: 0; padding: 0; margin: 4px 10px 0 0;"
+            %td.left
+              %h3= place.name
+              %b.light-brown= place.full_address
+              %br
+              = place.description
+            %td.right
+              %h3
+                = place.phone
+              = number_with_precision place.distance_to(@search_place), :precision => 2
+              %span.light-biege km
+              %br
+              - unless place.email.blank?
+                = link_to "Email", "mailto:" + place.email
+              - unless place.website.blank?
+                - unless place.email.blank?
+                  |
+                = link_to "Website", place.website
+
+= render "floodlight_tags/where_to_buy"
+
+- content_for :sidebar do
+  - unless @featured_product.blank?
+    %h3 Featured
+    .feature-sidebar
+      = render :partial => "pages/feature", :locals => { :feature => @featured_product }
+
+- content_for :scripts do
+  = javascript_include_tag "http://maps.google.com/maps/api/js"
+  = javascript_include_tag :google_maps
+  - if @search_place.blank? || @search_place.gmaps == false
+    = render :partial => "places_map_default"
+  - else
+    = render :partial => "places_map", :locals => { :places => @places, :search_place => @search_place }

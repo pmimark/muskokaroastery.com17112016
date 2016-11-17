@@ -1,0 +1,14 @@
+= simple_form_for(@shipping_rate) do |f|
+  = f.error_messages
+  .inputs
+    -# = f.input :name, :disabled => true, :hint => "(disabled to prevent changes)"
+    -# = f.input :country_code, :disabled => true, :hint => "(disabled to prevent changes)", :as => :string
+    %h2
+      = @shipping_rate.name
+      = "(#{ @shipping_rate.country_code })"
+    = f.input :price, :as => :string
+    = f.input :free_price, :as => :string, :label => "Free Shipping"
+
+  .actions
+    = f.button :submit
+

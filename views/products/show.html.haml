@@ -1,0 +1,83 @@
+- content_for :title do
+  = @product.name
+
+#product-basics
+  = image_tag @product.photo.url(:square), :size => "184x184", :alt => @product.name + " illutration", :class => "featured-image"
+
+  #product-price
+    %h1
+      = number_to_currency(@product.price, :unit => "$", :separator => ".", :precision => 2)
+      #product-price-description
+        = @product.per
+        / per pkg.
+    %p
+      = "(#{ @product.price_alt_txt })"
+      / (comes in
+      / %strong= @product.size.to_s + "g"
+      / packages)
+
+  #product-purchase
+    - if @product.out_of_stock
+      %h2 Out of Stock
+      %p
+        We're sorry, but this product is currently out of stock. Please check
+        back later to see when it becomes available again.
+    - else
+      %h2 Purchase
+      %p
+        Select type and quantity, then add to your cart.
+
+      #add-to-cart-form-container
+        = render :partial => "add_to_cart", :locals => { :product => @product }
+
+#product-details
+  #intro
+    =simple_format @product.description
+
+  #product-body
+    =raw @product.body
+
+    / Insert optional auto-descriptions here for any product *options* or *flavours* so there's no need to re-type anything.
+    - if @product.include_flavour_descriptions
+      =raw product_flavour_descriptions(@product)
+
+  - if @product.include_graphs
+    #product-graphs
+      .quality
+        %h3 Roast
+        .name= @product.roast_name
+        =raw product_quality_graph(@product.roast)
+      .quality
+        %h3 Body
+        .name= @product.body_name
+        =raw product_quality_graph(@product.body_quality)
+      .quality
+        %h3 Acidity
+        .name= @product.acidity_name
+        =raw product_quality_graph(@product.acidity)
+
+  %nav#product-alt-nav
+    = render :partial => "other_products"
+
+- content_for :sidebar do
+  - if controller.action_name != "checkout"
+    #shopping-cart-container
+      = render :partial => "shopping_cart/small_cart"
+  - if current_user && current_user.is_admin?
+    %hr
+    %p= link_to "Edit Product", edit_product_path(@product), :class => "feature-button"
+    %p= link_to "Manage Flavours", product_product_flavours_path(@product)
+    %br
+    %p= link_to "Back to Product List", products_path
+    / %p= link_to "Destroy", product_path(@product), :confirm => "Are you sure?", :method => :delete
+
+- unless @product.description.blank?
+  - content_for :description do
+    = @product.description
+- unless @product.keywords.blank?
+  - content_for :keywords do
+    = @product.keywords
+
+- content_for :scripts do
+  = javascript_include_tag :product_details
+  -# = include_javascripts :validate_add_to_cart_min

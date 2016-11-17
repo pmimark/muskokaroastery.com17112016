@@ -1,0 +1,35 @@
+@import "../variables";
+
+#google-map-preview {
+  width: 500px;
+  height: 300px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+#google-map-where-to-buy {
+  width: 680px;
+  height: 400px;
+  /*margin-bottom: 20px;*/
+  overflow: hidden;
+}
+#where-to-buy-search-results-listing {
+  margin-top: 20px;
+}
+#where-to-buy-search-form-container {
+  width: 100%;
+  padding: 0 0 13px 0;
+}
+#where-to-buy-search-form-container h2 {
+  margin-bottom: 10px;
+}
+#where-to-buy-search-form {
+}
+#where-to-buy-search-field {
+  float: left;
+  width: 450px;
+  margin: 5px 0 0 0;
+}
+#where-to-buy-search-button {
+  margin-right: 0;
+  float: right;
+}

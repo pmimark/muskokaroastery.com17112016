@@ -1,0 +1,16 @@
+%ul#footer-nav.sortable-pages
+  - @no_section.pages.each do |page|
+    - unless page.hidden
+      %li{ "data-page" => page.id }
+        = link_to page.name, show_no_page_path(page.slug)
+  - if current_user
+    %li= link_to "Logout", logout_path
+  - else
+    - if controller.controller_name == 'shopping_cart' && controller.action_name == 'checkout'
+      %li= link_to "Login", login_path(:d => 'checkout')
+    - else
+      %li= link_to "Login", login_path
+  - if current_user and current_user.is_admin?
+    %li
+      .add-page-link
+        = link_to "Add Page", new_page_path(:section_id => @no_section.id), :style => "font-weight: normal;"

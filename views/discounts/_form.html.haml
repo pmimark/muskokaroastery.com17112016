@@ -1,0 +1,7 @@
+= simple_form_for(@discount) do |f|
+  = f.error_messages
+  = f.input :name
+  = f.input :percentage
+  = f.input :expires_at
+  = f.association :products, :label => "Products", :as => :check_boxes
+  = f.button :submit

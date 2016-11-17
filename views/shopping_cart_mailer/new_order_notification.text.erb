@@ -1,0 +1,60 @@
+MRCC Notification: New Order
+===========================================================
+Order ID #<%= @order.id %>
+Ordered by <%= @order.name %><%= "(#{ @order.company })" unless @order.company.blank? %>
+Email <%= @order.email %>
+Ordered on <%= @order.created_at.strftime("%e %B %Y @%l:%M%P") %>
+
+
+Order
+===========================================================
+<%- @order.line_items.each_with_index do |item, i| %>
+  Product Name: <%= item.item_name %>
+  Type: <%= item.item_option %>
+  Flavour: <%= item.item_flavour %>
+  Quantity: <%= item.quantity %>
+  Unit Price: <%= number_to_currency item.item_price %>
+  Total: <%= number_to_currency item.item_price * item.quantity %>
+-----------------------------------------------------------
+<%- end %>
+Subtotal: <%= number_to_currency @order.subtotal %>
+Shipping Fees: <%= number_to_currency @order.shipping_fees %>
+-----------------------------------------------------------
+Total: <%= number_to_currency @order.total %>
+-----------------------------------------------------------
+
+
+Billing Address
+===========================================================
+<%- if @order.address_optional.blank? %>
+  <%= @order.address %>
+<%- else %>
+  <%= @order.address + ", " + @order.address_optional %>
+<%- end %>
+<%= @order.city + ", " + @order.province %>
+<%= @order.country %>
+<%= @order.postal %>
+-----------------------------------------------------------
+<%= @order.phone %>
+-----------------------------------------------------------
+<%- if @order.billing_same_as_shipping %>
+
+
+(shipping address is the same as billing address)
+<%- else %>
+
+
+Shipping Address
+===========================================================
+<%= @order.shipping_name %>
+  <%- if @order.shipping_address_optional.blank? %>
+<%= @order.shipping_address %>
+  <%- else %>
+<%= @order.shipping_address + ", " + @order.shipping_address_optional %>
+  <%- end %>
+<%= @order.shipping_city + ", " + @order.shipping_province %>
+<%= @order.shipping_country %>
+<%= @order.shipping_postal %>
+-----------------------------------------------------------
+<%= @order.shipping_phone %>
+<%- end %>

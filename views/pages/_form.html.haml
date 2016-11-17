@@ -1,0 +1,14 @@
+= simple_form_for @page do |f|
+  = f.error_messages
+  = f.input :name, :label => "Page Title"
+  .editor-area
+    = f.text_area :intro, :class => "tinymce small"
+  .editor-area
+    = f.text_area :body, :class => "tinymce"
+  = f.input :section_id, :collection => @sections.collect { |s| [s.name, s.id] }, :prompt => "- select a section -", :as => :radio_buttons
+  = f.input :keywords
+  = f.input :description
+  = f.association :products, :label => "Related Products", :as => :check_boxes
+  = f.button :submit
+
+= tinymce

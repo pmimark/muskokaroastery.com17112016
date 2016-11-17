@@ -1,0 +1,13 @@
+= simple_form_for @feature, :html => { :multipart => true } do |f|
+  = f.error_messages
+  = f.input :name
+  - unless @feature.is_homepage_feature
+    = f.input :is_active, :label => "Currently Active Feature (note that this will deactivate the previously active feature)"
+  = f.input :body, :input_html => { :class => "tiny" }
+  = f.input :photo
+  - unless @feature.photo.url.blank?
+    .clearfix{ :style => "margin-left: 95px;" }
+      = image_tag @feature.photo.url(:featured)
+  = f.input :link_name
+  = f.input :link_url, :as => :string
+  = f.button :submit

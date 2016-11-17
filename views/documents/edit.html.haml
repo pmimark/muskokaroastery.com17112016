@@ -1,0 +1,8 @@
+- content_for :title do
+  Editing Document
+
+= render 'form'
+
+- content_for :sidebar do
+  %p= link_to 'Show', @document, :class => "feature-button"
+  %p= link_to 'Back', documents_path

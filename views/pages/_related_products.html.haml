@@ -1,0 +1,15 @@
+- unless related_products.blank?
+  %h3 Related Coffee
+  %p Find out more about related types of coffees that we offer.
+  %ul#related-products.clearfix
+    - related_products.each do |product|
+      %li
+        = link_to image_tag(product.photo.url(:icon), :size => "32x32", :alt => product.name, :align => "left"), product_path(product)
+        = link_to product.name, product_path(product)
+        -# = product.roast_name
+        -# .related-product-price
+        %h3
+          = number_to_currency product.price
+          %span.per-pkg
+            per pkg.
+

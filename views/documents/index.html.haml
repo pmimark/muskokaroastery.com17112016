@@ -1,0 +1,19 @@
+- content_for :title do
+  Listing Documents
+
+%table.admin{ :style => "width: 100%" }
+  %tr
+    %th Filename
+    %th
+    %th
+    %th
+
+  - @documents.each do |document|
+    %tr
+      %td= document.attachment.url.split("?")[0]
+      %td= link_to 'Show', document
+      %td= link_to 'Edit', edit_document_path(document)
+      %td= link_to 'Destroy', document, :confirm => 'Are you sure?', :method => :delete
+
+- content_for :sidebar do
+  = link_to 'New Document', new_document_path, :class => "feature-button"

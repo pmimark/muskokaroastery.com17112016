@@ -1,0 +1,118 @@
+- content_for :title do
+  Register
+
+= form_for @user, :url => '/users', :html => { :class => 'muskoka-form', :id => 'register-form' } do |f|
+  %p
+    By registering your account details with our website, you gain the benefit of faster checkouts.
+    Once registered, all you need to do is 
+    = link_to "login", login_path
+    and you avoid the need to fill out all your
+    information again. Registering is not required and is offered as a convenience for our customers.
+
+  = f.error_messages
+
+  %h2 Account Details
+  %p
+    Your basic Muskoka Roastery Coffee Co. website account information.
+
+  #account-details{ :style => "margin-bottom: 40px;" }
+    .field
+      .label
+        = f.label :username, "Username"
+        .optional *
+        .hint Any name you like in one word.
+      .input
+        = f.text_field :username, :placeholder => "yourusername"
+      .error
+    .field
+      .label
+        = f.label :password, "Password"
+        .optional *
+        .hint Minimum 5 characters.
+      .input
+        = f.password_field :password
+      .error
+    .field
+      .label
+        = f.label :password_confirmation, "Password Confirmation"
+        .optional *
+        .hint Re-type password.
+      .input
+        = f.password_field :password_confirmation
+      .error
+    .field
+      .label
+        = f.label :email, "Email Address"
+        .optional *
+        .hint If we need to contact you.
+      .input
+        = f.text_field :email, :placeholder => "johnsmith@yourdomain.com"
+      .error
+    .field
+      .label
+        = f.label :name
+        .hint Your full name.
+      .input
+        = f.text_field :name, :placeholder => "John Smith"
+      .error
+    .field
+      .label
+        = f.label :company, "Company Name"
+        .hint If you are ordering for a business.
+      .input
+        = f.text_field :company, :placeholder => "Acme Corp."
+      .error
+
+  #billing-details
+    %h2 Billing Details
+    %p
+      If your billing and shipping details are the same, then please fill out this single form. If
+      your shipping address is different from your billing address, simply un-check the box at the
+      bottom to reveal the separate shipping details form.
+
+    = render :partial => "billing_details", :locals => { :f => f }
+
+    .field
+      .long
+        = f.check_box :include_in_mailinglist
+        %b= Settings.mailing_list_label
+        .hint
+          = Settings.mailing_list_description
+    .field
+      .long
+        = f.check_box :billing_same_as_shipping, :checked => "checked"
+        %b shipping address is the same as billing address
+        .hint
+          If your shipping address is different than your billing
+          address, simply uncheck this box.
+
+  #shipping-details.clearfix
+    %h2 Shipping Details
+    %p
+      When you are sending the coffee in a different direction, please fill out the information
+      below so that we get the coffee to the right destination.
+
+    = render :partial => "shipping_details", :locals => { :f => f }
+
+  .actions.clearfix
+    .button
+      = f.submit "Register"
+    .extras
+      or
+      = link_to "cancel", root_url
+
+%p
+  Your privacy is important to us. Your billing and shipping information is used only for the purposes
+  of fulfilling your order (sending a bill and shipping your coffee to where you want it to go). Some
+  circumstances may require that we contact you in order to fulfill your order, and we may need your
+  phone number in this case, but only in the interest of getting you your coffee. Please read our full
+  = link_to "terms of use", "/company/terms-of-use"
+  if you have any concerns.
+
+- if current_user && current_user.is_admin?
+  - content_for :sidebar do
+    %p= link_to 'Back', users_path
+
+- content_for :scripts do
+  = javascript_include_tag :select_skin
+  = javascript_include_tag :validate_user_min

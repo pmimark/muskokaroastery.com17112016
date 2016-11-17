@@ -1,0 +1,13 @@
+- content_for :title do
+  Showing Document
+
+%p
+  %b File:
+  = link_to @document.attachment.url, @document.attachment.url
+%p
+  %b Caption:
+  = @document.name
+
+- content_for :sidebar do
+  %p= link_to 'Edit', edit_document_path(@document), :class => "feature-button"
+  %p= link_to 'Back', documents_path

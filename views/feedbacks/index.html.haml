@@ -1,0 +1,25 @@
+- content_for :title do
+  Latest Feedback
+
+%table.admin{ :style => "width: 100%" }
+  %tr
+    %th Name
+    %th Email
+    %th Date
+    %th
+    %th
+    %th
+
+  - @feedbacks.each do |feedback|
+    %tr{ :class => "#{ cycle("even", "odd") }" }
+      %td= feedback.name
+      %td= feedback.email
+      %td= feedback.created_at.strftime("%e %B %Y @%l:%M%P")
+      %td= link_to 'Show', feedback
+      %td= link_to 'Edit', edit_feedback_path(feedback)
+      %td= link_to 'Destroy', feedback, :confirm => 'Are you sure?', :method => :delete
+%hr
+= paginate @feedbacks
+
+-# - content_for :sidebar do
+-#   %p= link_to 'New Feedback', new_feedback_path, :class => "feature-button"

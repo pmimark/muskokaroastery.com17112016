@@ -1,0 +1,25 @@
+@import "../variables";
+
+@media screen and (max-width: $homepage-width) {
+  div.feature-left,
+  div.feature-middle,
+  div.feature-right {
+    width: auto;
+    margin-bottom: 40px;
+    margin-right: 0;
+    padding-right: 20px;
+    max-width: $phone-width;
+  }
+  .feature-image {
+    width: 100%;
+    height: auto;
+  }
+  .product-list-top img {
+    width: 270px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: $phone-width) {
+
+}

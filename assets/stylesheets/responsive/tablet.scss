@@ -1,0 +1,259 @@
+@import "../variables";
+
+@media screen and (max-width: $tablet-width) {
+  // Header
+  #main-menu-button {
+    display: block;
+  }
+
+  #global {
+    height: 68px;
+    //border-bottom: 8px solid $dark-red;
+  }
+
+  header nav {
+    display: none;
+  }
+
+  #logo {
+    position: absolute;
+    top: 14px;
+    left: 60px;
+    float: none;
+    width: 122px;
+    margin: 0;
+
+    img {
+      width: 120px;
+      height: auto;
+    }
+  }
+
+  #shopping-cart {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    float: none;
+    width: auto;
+    margin: 0;
+  }
+  #global-menu {
+    display: none;
+  }
+  #global-shopping-cart-top {
+    position: absolute;
+    top: 8px;
+    right: 130px;
+    width: 145px;
+  }
+  #global-shopping-cart-bottom {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  #global-checkout-button,
+  #global-checkout-button-small {
+    width: 120px;
+    height: 32px;
+    padding: 0 10px;
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 32px;
+    font-weight: normal;
+    text-align: center;
+  }
+  #global-checkout-button-small {
+    width: 70px;
+  }
+
+  // Background photo + flash messages
+  #flash {
+    height: 50px;
+    padding: 10px;
+  }
+
+  #container {
+    background-position: center -150px !important;
+    padding-bottom: 20px;
+  }
+
+  // Sidebar
+  #sidebar {
+    display: none;
+  }
+
+  // Main content
+  #main {
+    width: 100%;
+    //padding: 0 20px;
+  }
+  #content {
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: 0;
+
+    img {
+      box-sizing: border-box;
+      min-width: 70px;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  // Footer
+  #page-content > footer {
+    height: 450px;
+  }
+
+  #sitemap {
+    display: none;
+  }
+
+  #more {
+    width: auto;
+    padding: 20px 20px 60px 20px;
+    border: 0;
+
+  }
+  #copyright {
+    float: none;
+    width: auto;
+
+    nav {
+      width: auto;
+    }
+  }
+  #social {
+    float: none;
+    width: auto;
+  }
+
+  // Newsletter signup
+  .newsletter-signup-bar {
+    width: auto;
+    height: auto;
+  }
+  .newsletter-signup-container {
+    width: auto;
+    height: auto;
+    padding: 20px;
+  }
+  #newsletter-signup-label {
+    display: block;
+    position: relative;
+    top: auto;
+    left: auto;
+  }
+  form.newsletter-signup {
+    position: relative;
+    display: block;
+    width: auto;
+    padding-top: 10px;
+  }
+  #newsletter-signup-input {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 280px;
+  }
+  #newsletter-signup-submit {
+    position: absolute;
+    top: 12px;
+    right: auto;
+    left: 336px;
+  }
+  #newsletter-signup-confirmed {
+    position: relative;
+    top: auto;
+    right: auto;
+  }
+
+  // Where to buy
+  #google-map-where-to-buy {
+    width: auto;
+    height: 300px;
+    //margin-right: 20px;
+  }
+  #where-to-buy-search-form-container {
+    display: block;
+    width: 100%;
+
+    form {
+      position: relative;
+      width: auto;
+      //padding-right: 10px;
+      padding-right: 230px;
+    }
+  }
+  #where-to-buy-search-field {
+    display: block;
+    width: 100%;
+    float: none;
+    margin-bottom: 10px;
+  }
+  #where-to-buy-search-button {
+    float: none;
+    position: absolute;
+    top: -6px;
+    right: 0;
+  }
+
+  // Tables
+  table#contact-info td {
+    width: 33%;
+    padding-right: 10px;
+  }
+  table#contact-info td:last-child {
+    padding-right: 0;
+  }
+
+  // General Forms
+  form.muskoka-form {
+    width: auto;
+  }
+  form.muskoka-form div.long {
+    width: auto;
+  }
+  form.muskoka-form div.actions div.extras {
+    width: auto;
+  }
+
+  // Shop
+  #order-review {
+    //padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: $homepage-width) {
+  #product-basics {
+    position: relative;
+    float: none;
+    width: auto;
+  }
+  #product-price {
+    position: absolute;
+    top: 0;
+    left: 230px;
+  }
+  #product-details {
+    margin-left: 0;
+    padding-top: 40px;
+    width: auto;
+    float: none;
+  }
+  #product-options td.image {
+    width: 50px;
+  }
+  form.muskoka-form div.error {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .main-product-image {
+    width: 100%;
+    height: auto;
+  }
+}

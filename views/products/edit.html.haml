@@ -1,0 +1,12 @@
+- content_for :title do
+  Editing Product
+
+%div{ :style => "margin-bottom: 20px;" }
+  %b= "http://muskokaroastery.com/shop/products/#{ @product.slug }"
+  
+= render 'form'
+
+- content_for :sidebar do
+  %p= link_to "Preview Product", @product, :class => "feature-button"
+  %br
+  %p= link_to "Back to Product Listing", products_path

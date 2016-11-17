@@ -1,0 +1,74 @@
+@import "../variables";
+
+.newsletter-signup-bar {
+  background-color: #ebddc8;
+  height: 84px;
+}
+.newsletter-signup-container {
+  width: 920px;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+}
+
+#newsletter-signup-label {
+  position: absolute;
+  top: 20px;
+  left: 0;
+}
+#newsletter-signup-label h2 {
+  margin-bottom: 2px;
+}
+#newsletter-signup-label .description {
+  color: #4d351d;
+  opacity: 0.6;
+  font-weight: bold;
+}
+
+form.newsletter-signup {
+}
+#newsletter-signup-input {
+  position: absolute;
+  top: 20px;
+  right: 130px;
+  height: 20px;
+  width: 300px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+#newsletter-signup-submit {
+  position: absolute;
+  top: 22px;
+  right: 0;
+  width: 120px;
+}
+
+#newsletter-signup-form label.error {
+  position: absolute;
+  top: 63px;
+  left: 448px;
+  color: #a33229;
+  font-weight: bold;
+}
+#newsletter-signup-input.error {
+  border-color: #a33229;
+  border-width: 2px;
+  padding: 8px 18px;
+}
+
+#newsletter-signup-loading {
+  display: none;
+  position: absolute;
+  top: 25px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: transparent image-url('ajax-loader.gif') 0 3px no-repeat;
+}
+
+#newsletter-signup-confirmed {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 0;
+}

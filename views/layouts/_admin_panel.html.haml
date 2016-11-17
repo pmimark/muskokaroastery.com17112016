@@ -1,0 +1,22 @@
+#admin-panel
+  #admin-controls
+    %b MRCC 
+    Content Management System
+    %br
+    %ul
+      %li= link_to "Images", images_path
+      %li= link_to "Documents", documents_path
+      %li= link_to "Places", places_path
+      %li= link_to "Orders", orders_path
+      %li= link_to "Discounts", discounts_path
+      %li= link_to "Feedback", feedbacks_path
+      %li= link_to "Features", features_path
+      %li= link_to "Backgrounds", backgrounds_path
+      %li= link_to "Users", users_path
+  #admin-login
+    You are logged in as
+    %b= current_user.username
+    %br
+    %ul
+      %li= link_to "Edit Profile", edit_user_path(current_user)
+      %li= link_to "Logout", logout_path

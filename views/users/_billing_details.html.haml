@@ -1,0 +1,50 @@
+.field
+  .label
+    = f.label :address, "Street Address"
+    .hint Where your bills are delivered.
+  .input
+    = f.text_field :address, :placeholder => "123 Main Street"
+  .error
+.field
+  .label
+    = f.label :address_optional, "Apt., Suite, Bldg."
+    .optional (optional)
+    .hint Or any special instructions.
+  .input
+    = f.text_field :address_optional, :placeholder => "Apt. #345, South Bldg."
+  .error
+.field
+  .label
+    = f.label :city
+    .hint Where you live.
+  .input
+    = f.text_field :city, :placeholder => "Toronto"
+  .error
+.field
+  .label
+    = f.label :province
+    .hint Province, State, Territory, County.
+  .input
+    = f.text_field :province, :placeholder => "Ontario"
+  .error
+.field
+  .label
+    = f.label :country
+    .hint Where you are in the world.
+  .input
+    = country_select("user", "country", ["Canada", "United States"])
+  .error
+.field
+  .label
+    = f.label :postal, "Postal Code"
+    .hint Post Code or ZIP
+  .input
+    = f.text_field :postal, :placeholder => "M6G 3B2"
+  .error
+.field
+  .label
+    = f.label :phone, "Telephone Number"
+    .hint Only used in case of delivery issues.
+  .input
+    = f.text_field :phone, :placeholder => "416.123.4567"
+  .error

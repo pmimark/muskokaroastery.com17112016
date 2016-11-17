@@ -1,0 +1,112 @@
+@import "../variables";
+
+/* Override default selected highlight color */
+::-moz-selection { background: $red; }
+::selection { background: $red; }
+
+/*  j.mp/webkit-tap-highlight-color */
+a:link { -webkit-tap-highlight-color: $red; }
+
+
+/* Global Tags */
+/**************************/
+html, body {
+  width: 100%;
+}
+body {
+  font-family: $sans-serif;
+  font-size: 12px;
+  line-height: 18px;
+  color: $brown;
+  background-color: $biege;
+}
+h1, h2, h3, h4, h5, a.feature-button {
+  font-family: $serif;
+  color: $dark-brown;
+  font-weight: bold;
+}
+h1 {
+  font-size: 42px;
+  line-height: 46px;
+  margin-bottom: 18px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: 4px;
+}
+h3 {
+  font-size: 14px;
+  line-height: 17px;
+  margin-bottom: 5px;
+}
+h4 {
+  font-size: 18px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+h5, a.feature-button {
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+p {
+  margin-bottom: 20px;
+}
+hr {
+  margin-bottom: 20px;
+  border-top: none;
+  border-bottom: 1px dotted $dark-biege;
+  padding-top: 2px;
+  clear: both;
+}
+// td {
+//   text-align: left;
+//   vertical-align: top;
+// }
+sup {
+  vertical-align: baseline;
+  font-size: 0.8em;
+  position: relative;
+  top: -0.4em;
+}
+sub {
+  vertical-align: baseline;
+  font-size: 0.8em;
+  position: relative;
+  bottom: -0.4em;
+}
+
+/* Global Styles */
+/**************************/
+header, header nav, #container, footer, #flash-panel, #admin-panel {
+  width: 100%;
+  text-align: center;
+  vertical-align: top;
+}
+#global, header nav ul, #main, footer nav, #more, #admin nav, #flash {
+  width: $desktop-width;
+  margin: 0 auto;
+  text-align: left;
+}
+/*#flash-notice, #flash-error, #flash-warning, #flash-info { */
+
+
+/* Clearfix */
+/**************************/
+.clearfix:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+.clearfix {
+  display: inline-block;
+}
+html[xmlns] .clearfix {
+  display: block;
+}
+* html .clearfix {
+  height: 1%;
+}

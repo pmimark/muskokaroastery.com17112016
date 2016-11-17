@@ -1,0 +1,16 @@
+- content_for :title do
+  Showing Feedback
+
+%p
+  %b Name:
+  = @feedback.name
+%p
+  %b Email:
+  = @feedback.email
+%p
+  %b Comment:
+  = @feedback.comment
+
+- content_for :sidebar do
+  %p= link_to 'Edit', edit_feedback_path(@feedback), :class => "feature-button"
+  %p= link_to 'Back', feedbacks_path

@@ -1,0 +1,29 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    var shadow = new google.maps.MarkerImage("<%= asset_path "pin_shadow.png" %>",
+      new google.maps.Size(49, 40),
+      new google.maps.Point(0, 0),
+      new google.maps.Point(10, 34)
+    );
+    $("#google-map-where-to-buy").gmap({
+      center: new google.maps.LatLng(<%= search_place.latitude %>, <%= search_place.longitude %>),
+      zoom: 13,
+      callback: function() {
+        <%- places.each_with_index do |place, i| %>
+          var marker = new google.maps.MarkerImage("<%= asset_path "pin_#{ @letters[i] }.png" %>",
+            new google.maps.Size(20, 34), // size
+            new google.maps.Point(0, 0),  // origin
+            new google.maps.Point(10, 34) // anchor
+          );
+          $("#google-map-where-to-buy").gmap("addMarker", {
+            position: new google.maps.LatLng(<%= place.latitude %>, <%= place.longitude %>),
+            bounds: true,
+            title: "<%= place.name %>",
+            icon: marker,
+            shadow: shadow
+          });
+        <%- end %>
+      }
+    });
+  });
+</script>

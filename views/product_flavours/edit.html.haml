@@ -1,0 +1,10 @@
+- content_for :title do
+  Editing Flavour
+
+= render 'form'
+
+- content_for :sidebar do
+  %p= link_to 'Show', product_product_flavour_path(@product, @product_flavour), :class => "feature-button"
+  %br
+  %p= link_to 'Destroy', product_product_flavour_path(@product, @product_flavour), :confirm => 'Are you sure?', :method => :delete
+  %p= link_to 'Back', product_product_flavours_path(@product)

@@ -1,0 +1,30 @@
+%ul#sitemap
+  - @sections.each do |section|
+    - unless section.slug == "none"
+      %li
+        %h5
+          = link_to section.name, show_section_path(section.slug)
+        - if section.slug == "blog"
+          %ul{ :class => "sortable-blog-categories" }
+            - @blog_categories.each do |blog_category|
+              %li{ "data-blog-category" => blog_category.id }
+                - if current_user and current_user.is_admin?
+                  %span.handle &nbsp;
+                = link_to blog_category.name, blog_category_show_path(blog_category.slug)
+          - if current_user and current_user.is_admin?
+            .add-page-link
+              = link_to "Add Blog Category", new_blog_category_path
+        - else
+          %ul{ :class => "sortable-pages" }
+            - section.pages.each do |page|
+              - unless page.hidden
+                %li{ "data-page" => page.id }
+                  - if current_user and current_user.is_admin?
+                    %span.handle &nbsp;
+                  = link_to page.name, show_page_path(section.slug, page.slug)
+            - if section.slug == "shop"
+              - @product_types.each do |product_type|
+                %li= link_to product_type.name, shop_category_path(product_type.slug)
+          - if current_user and current_user.is_admin?
+            .add-page-link
+              = link_to "Add Page", new_page_path(:section_id => section.id)

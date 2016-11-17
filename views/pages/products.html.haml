@@ -1,0 +1,266 @@
+- @is_homepage = true
+- @section = Section.where({ :slug => "shop" }).first
+- content_for :title do
+  Our Portfolio
+
+#intro
+  If you are new to the Muskoka Roastery portfolio, we offer the following navigation tips.
+
+%p
+  Our five Heritage Blends are the foundation of our portfolio; a short description of each, as well as
+  the roast level is included. Our seven Flavoured Coffees include our most popular flavour- Muskoka Maple.
+  This year we are excited to offer two brand new products- a Breakfast Blend and an Espresso. Choose from
+  available ground or whole bean, and caf or decaf options.
+
+%div.clearfix{ :style => "margin-bottom: 30px;" }
+  .feature-left
+    = image_tag "/system/temp/product_Granite-Roast.jpg", :size => "184x184", :border => 0
+    %h2 Granite Roast
+    %p
+      %b.dark VERY DARK
+      A vigorous, earthy coffee with a deep body, high acidity and a strong aroma.
+    -# = link_to "Buy Now", "", :class => "feature-button"
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Granite Roast - 400g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Granite Roast - 400g - Whole Bean", "15.99"
+
+  .feature-middle
+    = image_tag "/system/temp/product_Northern-Lights.jpg", :border => 0, :size => "184x184"
+    %h2 Northern Lights
+    %p
+      %b.dark MEDIUM LIGHT
+      This roast is subtle, with shimmering layers of taste and a beautiful aroma.
+      %br
+      %br
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Northern Lights - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Northern Lights - 454g - Whole Bean", "15.99"
+
+  .feature-right
+    = image_tag "/system/temp/product_Howling-Wolf.jpg", :border => 0, :size => "184x184"
+    %h2 Howling Wolf
+    %p
+      %b.dark MEDIUM DARK
+      Rich, deep, well-rounded flavour and aroma.
+      %br
+      %br
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Howling Wolf - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Howling Wolf - 454g - Whole Bean", "15.99"
+
+
+%div.clearfix{ :style => "margin-bottom: 30px;" }
+  .feature-left
+    = image_tag "/system/temp/product_Lumberjack.jpg", :border => 0, :size => "184x184"
+    %h2 Lumberjack
+    %p
+      %b.dark MEDIUM
+      A well balanced coffee with a striking flavour and clean acidity.
+      %br
+      %br
+      %br
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Lumberjack - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Lumberjack - 454g - Whole Bean", "15.99"
+      %tr
+        %td
+          %b Ground Decaf
+        %td=raw buy_button "Lumberjack - 454g - Ground Decaf", "15.99"
+      %tr
+        %td
+          %b Whole Bean Decaf
+        %td=raw buy_button "Lumberjack - 454g - Whole Bean Decaf", "15.99"
+
+  .feature-middle
+    = image_tag "/system/temp/product_Black-Bear.jpg", :border => 0, :size => "184x184"
+    %h2 Black Bear
+    %p
+      %b.dark DARK
+      The coffee that put us on the map; bold, full-bodied taste with a growl.
+      %br
+      %br
+      %br
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Black Bear - 400g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Black Bear - 400g - Whole Bean", "15.99"
+      %tr
+        %td
+          %b Ground Decaf
+        %td=raw buy_button "Black Bear - 400g - Ground Decaf", "15.99"
+      %tr
+        %td
+          %b Whole Bean Decaf
+        %td=raw buy_button "Black Bear - 400g - Whole Bean Decaf", "15.99"
+
+  .feature-right
+    = image_tag "/system/temp/product_Muskoka-Maple.jpg", :border => 0, :size => "184x184"
+    %h2 Muskoka Maple
+    %p
+      %b.dark FLAVOURED
+      Our signature flavour evokes memories of a beautiful Muskoka spring day at the sugar shack.
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Muskoka Maple - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Muskoka Maple - 454g - Whole Bean", "15.99"
+      %tr
+        %td
+          %b Ground Decaf
+        %td=raw buy_button "Muskoka Maple - 454g - Ground Decaf", "15.99"
+      %tr
+        %td
+          %b Whole Bean Decaf
+        %td=raw buy_button "Muskoka Maple - 454g - Whole Bean Decaf", "15.99"
+
+%div.clearfix
+  .feature-left
+    = image_tag "/system/temp/product_Wood-Roasted.jpg", :border => 0, :size => "184x184"
+    %h2 Wood Roasted Espresso
+    %p
+      %b.dark NEW DARK
+      A classic espresso with a distinctive wood-roasted smokey note.
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Wood Roasted Espresso - 400g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Wood Roasted Espresso - 400g - Whole Bean", "15.99"
+
+  .feature-middle
+    = image_tag "/system/temp/product_Loon-Call.jpg", :border => 0, :size => "184x184"
+    %h2 Loon Call Breakfast Blend
+    %p
+      %b.dark NEW MEDIUM
+      The morning mist rises from the lake, a loon calls out; time to head down to the dock.
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Loon Call Breakfast Blend - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Loon Call Breakfast Blend - 454g - Whole Bean", "15.99"
+
+  .feature-right
+    = image_tag "/system/temp/product_Flavoured-BPecan.jpg", :border => 0, :size => "184x184"
+    %h2 Flavoured
+    %p
+      Each Muskoka Roastery flavour is designed to deliver a subtle, but distinct tasting note that meshes
+      perfectly with the unique blend of South American coffees that underpins the product. Never overpowering;
+      smooth and well rounded.
+    %p
+      %h3 Blueberry
+      A hint of fresh-picked, wild blueberry flavour to remind you of hot summer days.
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Blueberry - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Blueberry - 454g - Whole Bean", "15.99"
+
+    %p
+      %h3 Butter Pecan
+      This smooth flavour will have you remembering Grandma’s home-baked pecan pie.
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Butter Pecan - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Butter Pecan - 454g - Whole Bean", "15.99"
+
+    %p
+      %h3 Cranberry Cream
+      Creamy cranberry flavour with hints of vanilla; what could be more Muskoka.
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Cranberry Cream - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Cranberry Cream - 454g - Whole Bean", "15.99"
+
+    %p
+      %h3 Jamaican Me Crazy
+      Tropical Island Rum, crème de cacao and a hint of caramel; an exotic indulgence.
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Jamaican Me Crazy - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Jamaican Me Crazy - 454g - Whole Bean", "15.99"
+
+    %p
+      %h3 Vanilla Hazelnut
+      A traditional, rich vanilla flavour with a hint of hazelnut.
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Vanilla Hazelnut - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Vanilla Hazelnut - 454g - Whole Bean", "15.99"
+
+    %p
+      %h3 Chocolate Mint
+      Elegant and subtle, not overpowering. Enjoy any time of the day.
+    %table.temp_store
+      %tr
+        %td
+          %b Ground
+        %td=raw buy_button "Chocolate Mint - 454g - Ground", "15.99"
+      %tr
+        %td
+          %b Whole Bean
+        %td=raw buy_button "Chocolate Mint - 454g - Whole Bean", "15.99"
+

@@ -1,0 +1,29 @@
+- content_for :title do
+  Listing Images
+
+%table.admin
+  %tr
+    %th Thumb
+    %th Filename
+    %th Size
+    %th Updated at
+    %th
+    %th
+    %th
+
+  - @images.each do |image|
+    %tr{ :class => "#{ cycle("even", "odd") }" }
+      %td= image_tag image.image.url(:tiny_square), :class => "no-border"
+      %td{ :width => "300" }= image.image_file_name
+      %td= (image.image_file_size.to_f / 1000).round(2).to_s + "KB"
+      %td= image.image_updated_at.to_s(:full_day)
+      %td= link_to 'Preview', image
+      %td= link_to 'Edit', edit_image_path(image)
+      %td= link_to 'Destroy', image, :confirm => 'Are you sure?', :method => :delete
+
+%hr
+
+= paginate @images
+
+- content_for :sidebar do
+  %p= link_to 'New Image', new_image_path, :class => "feature-button"
