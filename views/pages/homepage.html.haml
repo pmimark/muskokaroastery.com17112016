@@ -1,7 +1,7 @@
 - @is_homepage = true
 
 - content_for :title do
-  = @homepage_title
+  =link_to "#{@homepage_title}", '/shop/category/compostable-pods'
 - if current_user and current_user.is_admin?
   %hr
   %p= link_to "Edit Title", edit_homepage_title_pages_path
@@ -10,7 +10,7 @@
   .feature-left
     - feature = Feature.homepage_left
     = link_to image_tag(feature.photo.url(:featured), :border => 0, class: 'feature-image'), feature.link_url
-    %h2= feature.name
+    %h2= link_to "#{feature.name}", feature.link_url
     %p= feature.body
     = link_to feature.link_name, feature.link_url, :class => "feature-button"
     - if current_user and current_user.is_admin?
@@ -20,7 +20,7 @@
   .feature-middle
     - feature = Feature.homepage_middle
     = link_to image_tag(feature.photo.url(:featured), :border => 0, class: 'feature-image'), feature.link_url
-    %h2= feature.name
+    %h2= link_to "#{feature.name}", feature.link_url
     %p= feature.body
     = link_to feature.link_name, feature.link_url, :class => "feature-button"
     - if current_user and current_user.is_admin?
@@ -30,7 +30,7 @@
   .feature-right
     - feature = Feature.homepage_right
     = link_to image_tag(feature.photo.url(:featured), :border => 0, class: 'feature-image'), feature.link_url
-    %h2= feature.name
+    %h2= link_to "#{feature.name}", feature.link_url
     %p= feature.body
     = link_to feature.link_name, feature.link_url, :class => "feature-button"
     - if current_user and current_user.is_admin?
